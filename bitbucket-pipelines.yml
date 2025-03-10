@@ -1,0 +1,19 @@
+image: atlassian/default-image:2
+
+pipelines:
+  branches:
+    main:
+      - step:
+          name: Deploy to Testing Server
+          script:
+            - pipe: atlassian/ssh-run:0.8.1
+              variables:
+                SSH_USER: "deploy"
+                SERVER: $DEPLOY_SERVER
+                SSH_KEY: $DEPLOY_SSH_KEY
+                COMMAND: |
+                  cd /home/deploy/carparts &&
+                  git pull origin main &&
+                  docker-compose build &&
+                  docker-compose down &&
+                  docker-compose up -d

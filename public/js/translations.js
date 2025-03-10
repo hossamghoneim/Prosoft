@@ -1,0 +1,88 @@
+const translate = (word) => {
+
+    let locale = document.querySelector('html').getAttribute('lang') || 'ar';
+    if( locale === 'ar' )
+        return translations[locale][word] ?? word;
+    else
+        return word;
+}
+
+let translations = {
+    'ar': {
+        "Please wait..." : "يرجى الانتظار...",
+        "Are you sure from deleting this " : "هل انت متاكد من حذف  ",
+        "Yes, Delete !" : "نعــم, أحذف !",
+        "No, Cancel" : "لا , ألغي",
+        "something went wrong" : "حدث خطأ ما",
+        "Error !" : "خطـأ !",
+        "Operation done successfully" : "تمت العملية بنجاح",
+        "This action is unauthorized." : "ليس لديك صلاحية لهذا الاجراء",
+        "Loading..." : "تحميل...",
+        "Actions" : "الإجراءات",
+        "Edit" : "تعديل",
+        "Show" : "التفاصيل",
+        "admin" : "المشرف",
+        "Delete" : "حذف",
+        "Are you sure you want to delete this" : "هل أنت متأكد من حذف هذا ",
+        "?" : "؟",
+        "No data available in table" : "لا يوجد بيانات",
+        "deleting now ..." : "يتم الحذف الأن ...",
+        "All data related to this" : "جميع البيانات المرتبطة بهذه",
+        "will be deleted" : "سوف يتم حذفها",
+        "Restore" : "استرجاع",
+        "You have restored the" : "تم استرجاع",
+        "No results found" : "لا يوجد نتائج للعرض",
+        "You have deleted the" : "تم حذف",
+        "was not deleted !" : "لم يتم الحذف !",
+        "successfully !" : "بنجاح !",
+        "Showing" : "عرض",
+        "to" : "من",
+        "records" : "صفوف",
+        "of" : "إجمالي",
+        "Showing no records" : "عدد الصفوف المعروضة",
+        "tag" : "الوسم",
+        "product" : "المنتج",
+        "order" : "الطلب",
+        "category" : "الفئه",
+        "Upload up to" : "الحد اﻷقصي",
+        "images" : "صورة",
+        "pieces" : "قطعة",
+        "published" : "منشور",
+        "unpublished" : "غير منشور",
+        "QAR" : "ر.س",
+        "Placed" : "جديد",
+        "Processing" : "جاري التجهيز",
+        "On Delivery" : "جاري التوصيل",
+        "Delivered" : "تم التوصيل",
+        "Custom Range" : "فترة محددة",
+        "change" : "تغيير",
+        "cancel" : "إلغاء",
+        "write a comment" : "اكتب تعليقا",
+        "user" : "المستخدم",
+        "subscriber" : "المشترك",
+        "Sales" : "المبيعات",
+        "Jan" : "يناير",
+        "Feb" : "فبراير",
+        "Mar" : "مارس",
+        "Apr" : "أبريل",
+        "May" : "مايو",
+        "June" : "يونيو",
+        "July" : "يوليو",
+        "Aug" : "أغسطس",
+        "Sep" : "سبتمبر",
+        "Oct" : "أكتوبر",
+        "Nov" : "نوفمبر",
+        "Dec" : "ديسمبر",
+        "coupon" : "كود الخصم",
+        "active" : "فعال",
+        "inactive" : "غير فعال",
+        "expired" : "منتهي",
+        "Orders" : "طلب",
+        "Clients" : "عميل",
+        "" : "",
+        "" : "",
+        "" : ""
+    }
+};
+
+

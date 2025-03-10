@@ -1,0 +1,64 @@
+# Laravel specific
+/vendor/
+/node_modules/
+/public/storage
+/storage/*.key
+/bootstrap/cache/
+.env
+.env.*.local
+
+# Ignoring IDE and system files
+/.idea/
+/.vscode/
+/_ide_helper.php
+/_ide_helper_models.php
+/.phpstorm.meta.php
+/.DS_Store
+Thumbs.db
+
+# Composer dependencies
+/vendor/
+/composer.lock
+
+# Node.js dependencies
+/node_modules/
+/npm-debug.log
+/yarn-error.log
+/pnpm-lock.yaml
+
+# Laravel logs and cache
+/storage/logs/*.log
+/storage/framework/cache/*
+/storage/framework/views/*
+/storage/framework/sessions/*
+/storage/framework/testing/*
+/storage/oauth-private.key
+/storage/oauth-public.key
+
+# Laravel test & debug files
+/phpunit.xml
+/phpunit.xml.cache
+/database/database.sqlite
+/database/*.sqlite
+
+# Build and asset files
+/public/hot
+/public/storage
+/public/mix-manifest.json
+/public/js/*.map
+/public/css/*.map
+
+# Deployment files
+/.env
+/.env.example
+/deployment/
+/homestead.yaml
+/homestead.json
+/vagrant/
+
+# Docker
+/.docker/
+/docker-compose.yml
+
+# Other
+/.coverage/
