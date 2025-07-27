@@ -12,6 +12,7 @@ use App\Repositories\BrandRepository;
 use App\Repositories\CarModelRepository;
 use App\Repositories\RoleRepository;
 use App\Repositories\SettingRepository;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -29,7 +30,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        Schema::defaultStringLength(191);
     }
 
     private function bindRepositoriesInterfaces(): void
