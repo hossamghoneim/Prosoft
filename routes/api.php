@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\PartnershipPageController;
 use App\Http\Controllers\Api\ServicePageController;
 use Illuminate\Support\Facades\Route;
 
@@ -16,3 +17,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/services/page', [ServicePageController::class, 'getFullPage']);
 Route::post('/services/seed', [ServicePageController::class, 'seedTestData']);
+
+Route::get('/partnerships/page', [PartnershipPageController::class, 'getFullPage']);
+Route::post('/partnerships/seed', [PartnershipPageController::class, 'seedTestData']);

@@ -1,0 +1,26 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class PartnerBannerSectionItem extends Model
+{
+    protected $fillable = [
+        'partner_banner_section_id',
+        'icon',
+        'title',
+        'description',
+        'is_active',
+    ];
+
+    public function partnerBannerSection()
+    {
+        return $this->belongsTo(PartnerBannerSection::class, 'partner_banner_section_id');
+    }
+
+    public function getIconAttribute($value)
+    {
+        return $value ? asset($value) : null;
+    }
+}
