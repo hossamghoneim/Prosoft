@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Api\ContactUsPageController;
+use App\Http\Controllers\Api\LocationController;
 use App\Http\Controllers\Api\PartnershipPageController;
 use App\Http\Controllers\Api\ServicePageController;
 use Illuminate\Support\Facades\Route;
@@ -15,8 +17,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//Services
 Route::get('/services/page', [ServicePageController::class, 'getFullPage']);
 Route::post('/services/seed', [ServicePageController::class, 'seedTestData']);
 
+//Partnerships
 Route::get('/partnerships/page', [PartnershipPageController::class, 'getFullPage']);
 Route::post('/partnerships/seed', [PartnershipPageController::class, 'seedTestData']);
+
+//Contact Us
+Route::get('/contact-us/page', [ContactUsPageController::class, 'getFullPage']);
+Route::post('/contact-us/seed', [ContactUsPageController::class, 'seedTestData']);
+Route::post('/contact-us', [ContactUsPageController::class, 'sendContactInquiry']);
+
+//Locations
+Route::get('/locations', [LocationController::class, 'index']);
