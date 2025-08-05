@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\ContactUsPageController;
+use App\Http\Controllers\Api\HomeController;
 use App\Http\Controllers\Api\LocationController;
 use App\Http\Controllers\Api\PartnershipPageController;
 use App\Http\Controllers\Api\ServicePageController;
@@ -30,5 +31,7 @@ Route::get('/contact-us/page', [ContactUsPageController::class, 'getFullPage']);
 Route::post('/contact-us/seed', [ContactUsPageController::class, 'seedTestData']);
 Route::post('/contact-us', [ContactUsPageController::class, 'sendContactInquiry']);
 
-//Locations
-Route::get('/locations', [LocationController::class, 'index']);
+//Settings
+Route::get('/home', [HomeController::class, 'getHomePage']);
+Route::post('/home/update', [HomeController::class, 'updateFooter']);
+

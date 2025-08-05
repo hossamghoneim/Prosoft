@@ -39,22 +39,22 @@ class PartnershipPageController extends Controller
         $request->validate([
             'hero_video' => 'required|file|mimetypes:video/mp4,video/webm|max:102400', // 100MB
             'section_image' => 'required|image|mimes:jpeg,png,jpg,webp|max:5120',      // 5MB
-            'outter_icon1' => 'required|image|mimes:svg,png,jpg,jpeg|max:2048',
-            'outter_icon2' => 'required|image|mimes:svg,png,jpg,jpeg|max:2048',
-            'outter_icon3' => 'required|image|mimes:svg,png,jpg,jpeg|max:2048',
-            'outter_icon4' => 'required|image|mimes:svg,png,jpg,jpeg|max:2048',
-            'outter_icon5' => 'required|image|mimes:svg,png,jpg,jpeg|max:2048',
-            'outter_icon6' => 'required|image|mimes:svg,png,jpg,jpeg|max:2048',
-            'inner_icon1' => 'required|image|mimes:svg,png,jpg,jpeg|max:2048',
-            'inner_icon2' => 'required|image|mimes:svg,png,jpg,jpeg|max:2048',
-            'inner_icon3' => 'required|image|mimes:svg,png,jpg,jpeg|max:2048',
-            'inner_icon4' => 'required|image|mimes:svg,png,jpg,jpeg|max:2048',
-            'inner_icon5' => 'required|image|mimes:svg,png,jpg,jpeg|max:2048',
-            'inner_icon6' => 'required|image|mimes:svg,png,jpg,jpeg|max:2048',
-            'banner_image' => 'required|image|mimes:jpeg,png,jpg,webp|max:5120',      // 5MB
-            'icon1' => 'required|image|mimes:svg,png,jpg,jpeg|max:2048',
-            'icon2' => 'required|image|mimes:svg,png,jpg,jpeg|max:2048',
-            'icon3' => 'required|image|mimes:svg,png,jpg,jpeg|max:2048',
+            'outter_icon1' => 'required|image|mimes:jpeg,png,jpg,webp,svg|max:2048',
+            'outter_icon2' => 'required|image|mimes:jpeg,png,jpg,webp,svg|max:2048',
+            'outter_icon3' => 'required|image|mimes:jpeg,png,jpg,webp,svg|max:2048',
+            'outter_icon4' => 'required|image|mimes:jpeg,png,jpg,webp,svg|max:2048',
+            'outter_icon5' => 'required|image|mimes:jpeg,png,jpg,webp,svg|max:2048',
+            'outter_icon6' => 'required|image|mimes:jpeg,png,jpg,webp,svg|max:2048',
+            'inner_icon1' => 'required|image|mimes:jpeg,png,jpg,webp,svg|max:2048',
+            'inner_icon2' => 'required|image|mimes:jpeg,png,jpg,webp,svg|max:2048',
+            'inner_icon3' => 'required|image|mimes:jpeg,png,jpg,webp,svg|max:2048',
+            'inner_icon4' => 'required|image|mimes:jpeg,png,jpg,webp,svg|max:2048',
+            'inner_icon5' => 'required|image|mimes:jpeg,png,jpg,webp,svg|max:2048',
+            'inner_icon6' => 'required|image|mimes:jpeg,png,jpg,webp,svg|max:2048',
+            'banner_image' => 'required|image|mimes:jpeg,png,jpg,webp,svg|max:5120',      // 5MB
+            'icon1' => 'required|image|mimes:jpeg,png,jpg,webp,svg|max:2048',
+            'icon2' => 'required|image|mimes:jpeg,png,jpg,webp,svg|max:2048',
+            'icon3' => 'required|image|mimes:jpeg,png,jpg,webp,svg|max:2048',
         ]);
 
         // === Heroooooooooooooooooooooooooooooooooo ===

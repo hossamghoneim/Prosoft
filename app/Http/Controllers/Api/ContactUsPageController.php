@@ -6,6 +6,7 @@ use App\Enums\InquiryTypesEnum;
 use App\Http\Controllers\Controller;
 use App\Models\ContactInquiry;
 use App\Models\ContactUsContent;
+use App\Models\Location;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rules\Enum;
@@ -19,9 +20,16 @@ class ContactUsPageController extends Controller
             $query->limit(3);
         }])->first();
 
+        $locations = Location::where('is_active', true)
+            ->orderBy('order')
+            ->get();
+
         return response()->json([
             'success' => true,
-            'data' => $contactUsContent,
+            'data' => [
+                'contact_us_content' => $contactUsContent,
+                'locations' => $locations
+            ]
         ]);
     }
 

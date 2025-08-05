@@ -41,8 +41,8 @@ class ServicePageController extends Controller
         $request->validate([
             'hero_video' => 'required|file|mimetypes:video/mp4,video/webm|max:102400', // 100MB
             'banner_image' => 'required|image|mimes:jpeg,png,jpg,webp|max:5120',      // 5MB
-            'icon1' => 'required|image|mimes:svg,png,jpg,jpeg|max:2048',
-            'icon2' => 'required|image|mimes:svg,png,jpg,jpeg|max:2048',
+            'icon1' => 'required|image|mimes:jpeg,png,jpg,webp,svg|max:2048',
+            'icon2' => 'required|image|mimes:jpeg,png,jpg,webp,svg|max:2048',
         ]);
 
         // === Upload Hero Video ===
