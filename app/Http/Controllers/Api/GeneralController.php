@@ -7,12 +7,25 @@ use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
-class HomeController extends Controller
+class GeneralController extends Controller
 {
-    public function getHomePage(Request $request)
+    public function general(Request $request)
     {
+        $setting = Setting::where('key', 'footer')->first();
+
+        $data = $setting ? json_decode($setting->value, true) : [];
+
+        if (isset($data['logo'])) {
+            $data['banner_image'] = asset($data['banner_image']);
+            $data['logo'] = asset($data['logo']);
+        }
+
         return response()->json([
-            'success' => true
+            'success' => true,
+            'data' => [
+                'logo' => $data['logo'],
+                'footer' => $data,
+            ]
         ]);
     }
 

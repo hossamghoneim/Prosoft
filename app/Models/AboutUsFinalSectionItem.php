@@ -4,20 +4,20 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ServiceSectionItem extends Model
+class AboutUsFinalSectionItem extends Model
 {
     protected $fillable = [
-        'service_section_id',
-        'icon',
+        'about_us_final_section_id',
         'title',
         'description',
+        'icon',
         'order',
         'is_active',
     ];
 
-    public function section()
+    public function aboutUsFinalSection()
     {
-        return $this->belongsTo(ServiceSection::class);
+        return $this->belongsTo(AboutUsFinalSection::class);
     }
 
     public function getIconAttribute($value)
