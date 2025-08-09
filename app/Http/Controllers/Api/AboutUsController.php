@@ -73,8 +73,13 @@ class AboutUsController extends Controller
         // -------------------------------------------------------- //
 
         // === Create Features && Features Sections ===
-        $aboutUsFeature = AboutUsFeature::create([
-            'title' => 'Sales Acceleration',
+        $aboutUsFeature1 = AboutUsFeature::create([
+            'title' => 'What We Do',
+            'is_active' => true,
+        ]);
+
+        $aboutUsFeature2 = AboutUsFeature::create([
+            'title' => 'How We Do It',
             'is_active' => true,
         ]);
 
@@ -85,7 +90,7 @@ class AboutUsController extends Controller
         $icon2Path = Storage::url($icon2->store('icons', 'public'));
         $icon3Path = Storage::url($icon3->store('icons', 'public'));
 
-        $aboutUsFeature->aboutUsFeatureItems()->createMany([
+        $aboutUsFeature1->aboutUsFeatureItems()->createMany([
             [
                 'title' => 'Enterprise IT Distribution',
                 'description' => 'Specialized value-added distribution with over 30 years of experience in the enterprise IT space, connecting global vendors with local markets.',
@@ -93,6 +98,8 @@ class AboutUsController extends Controller
                 'order' => 1,
                 'is_active' => true,
             ],
+        ]);
+        $aboutUsFeature2->aboutUsFeatureItems()->createMany([
             [
                 'title' => 'End-to-End Support',
                 'description' => 'Comprehensive services including pre-sales consultancy, technical enablement, credit facilities, and strategic customer engagement.',
