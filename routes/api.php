@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\HomeController;
 use App\Http\Controllers\Api\LocationController;
 use App\Http\Controllers\Api\PartnershipPageController;
 use App\Http\Controllers\Api\ServicePageController;
+use App\Http\Controllers\Api\TermsAndConditionsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -37,6 +38,11 @@ Route::post('/contact-us', [ContactUsPageController::class, 'sendContactInquiry'
 Route::get('/general', [GeneralController::class, 'general']);
 Route::post('/general/update', [GeneralController::class, 'updateFooter']);
 
+//About Us
 Route::get('/about-us/page', [AboutUsController::class, 'getFullPage']);
 Route::post('/about-us/seed', [AboutUsController::class, 'seedTestData']);
+
+//Terms And Conditions
+Route::get('/terms-and-conditions/page', [TermsAndConditionsController::class, 'getFullPage']);
+Route::post('/terms-and-conditions/seed', [TermsAndConditionsController::class, 'seedTestData']);
 
