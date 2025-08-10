@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Setting;
+use App\Models\Solution;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -20,11 +21,14 @@ class GeneralController extends Controller
             $data['logo'] = asset($data['logo']);
         }
 
+        $solutions = Solution::whereIsActive(true)->select('id', 'title', 'slug')->get();
+
         return response()->json([
             'success' => true,
             'data' => [
                 'logo' => $data['logo'],
                 'footer' => $data,
+                'solutions' => $solutions
             ]
         ]);
     }
