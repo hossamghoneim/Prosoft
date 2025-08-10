@@ -51,3 +51,7 @@ Route::post('/terms-and-conditions/seed', [TermsAndConditionsController::class, 
 Route::get('/solutions/page', [SolutionController::class, 'getFullPage']);
 Route::post('/solutions/seed', [SolutionController::class, 'seed']);
 
+//Home
+Route::get('/home/page', [HomeController::class, 'getHomePage']);
+Route::post('/home/seed', [HomeController::class, 'seed']);
+

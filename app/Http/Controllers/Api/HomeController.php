@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Partner;
 use App\Models\Setting;
+use App\Models\Solution;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -11,34 +13,30 @@ class HomeController extends Controller
 {
     public function getHomePage(Request $request)
     {
+        $partnerLogos = Partner::pluck('inner_logo')->take(6)->toArray();
+        $solutions = Solution::select('id', 'title', 'image')->limit(6)->get();
+
         return response()->json([
-            'success' => true
+            'success' => true,
+            'data' => [
+                'partners' => $partnerLogos,
+                'solutions' => $solutions
+            ]
         ]);
     }
 
-    public function updateFooter(Request $request)
+    public function seed(Request $request)
     {
         $request->validate([
-            'banner_image' => 'required|image|mimes:jpeg,png,jpg,webp,svg|max:5120', // 5MB
-            'logo' => 'required|image|mimes:svg,png,jpg,jpeg,svg|max:2048',
+            'image' => 'required|image|mimes:jpeg,png,jpg,webp,svg|max:5120', // 5MB
         ]);
 
-        $data = [
-            'description' => "Prosoft is a specialized value-added distributor with 30+ years of experience in the enterprise IT space. We partner with global technology vendors to bring their solutions to market through our network of trusted experts.",
-            'linkedin_url' => "https://www.linkedin.com/company/prosoft-infomation-systems/",
-        ];
+        $imagePath = $request->file('image')->store('images', 'public');
+        $imageUrl = Storage::url($imagePath);
 
-        $bannerImagePath = $request->file('banner_image')->store('footer', 'public');
-        $bannerImageUrl = Storage::url($bannerImagePath);
-        $logoPath = $request->file('logo')->store('footer', 'public');
-        $logoUrl = Storage::url($logoPath);
-        $data['banner_image'] = $bannerImageUrl;
-        $data['logo'] = $logoUrl;
-
-        Setting::updateOrCreate(
-            ['key' => 'footer'],
-            ['value' => json_encode($data)]
-        );
+        Solution::find(1)->update([
+            'image' => $imageUrl
+        ]);
 
         return response()->json(['success' => true]);
     }
