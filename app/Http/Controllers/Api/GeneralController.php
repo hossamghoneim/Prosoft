@@ -13,12 +13,18 @@ class GeneralController extends Controller
     public function general(Request $request)
     {
         $setting = Setting::where('key', 'footer')->first();
+        $headerSetting = Setting::where('key', 'header')->first();
 
         $data = $setting ? json_decode($setting->value, true) : [];
+        $headerData = $headerSetting ? json_decode($headerSetting->value, true) : [];
 
         if (isset($data['logo'])) {
             $data['banner_image'] = asset($data['banner_image']);
             $data['logo'] = asset($data['logo']);
+        }
+
+        if (isset($headerData['secondaryLogo'])) {
+            $headerData['secondaryLogo'] = asset($headerData['secondaryLogo']);
         }
 
         $solutions = Solution::whereIsActive(true)->select('id', 'title', 'slug')->get();
@@ -27,6 +33,7 @@ class GeneralController extends Controller
             'success' => true,
             'data' => [
                 'logo' => $data['logo'],
+                'secondary_logo' => $headerData['secondaryLogo'],
                 'footer' => $data,
                 'solutions' => $solutions
             ]
