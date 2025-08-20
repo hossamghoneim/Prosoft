@@ -11,8 +11,7 @@ class AboutUsFeatureItem extends Model
         'icon',
         'title',
         'description',
-        'order',
-        'is_active'
+        'is_active',
     ];
 
     public function aboutUsFeature()
@@ -20,8 +19,8 @@ class AboutUsFeatureItem extends Model
         return $this->belongsTo(AboutUsFeature::class, 'about_us_feature_id');
     }
 
-    public function getIconAttribute($value)
+    public function getCreatedAtAttribute($value)
     {
-        return $value ? asset($value) : null;
+        return \Carbon\Carbon::parse($value)->format('d/m/Y H:i');
     }
 }

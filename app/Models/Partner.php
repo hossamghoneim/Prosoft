@@ -23,13 +23,8 @@ class Partner extends Model
         return $this->belongsTo(PartnershipSection::class, 'partnership_section_id');
     }
 
-    public function getInnerLogoAttribute($value)
+    public function getCreatedAtAttribute($value)
     {
-        return $value ? asset($value) : null;
-    }
-
-    public function getOuterLogoAttribute($value)
-    {
-        return $value ? asset($value) : null;
+        return \Carbon\Carbon::parse($value)->format('d/m/Y H:i');
     }
 }

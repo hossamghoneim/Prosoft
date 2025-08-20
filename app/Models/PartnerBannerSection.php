@@ -13,13 +13,13 @@ class PartnerBannerSection extends Model
         'is_active',
     ];
 
-    public function getImageAttribute($value)
-    {
-        return $value ? asset($value) : null;
-    }
-
     public function partnerBannerSectionItems()
     {
         return $this->hasMany(PartnerBannerSectionItem::class, 'partner_banner_section_id');
+    }
+
+    public function getCreatedAtAttribute($value)
+    {
+        return \Carbon\Carbon::parse($value)->format('d/m/Y H:i');
     }
 }

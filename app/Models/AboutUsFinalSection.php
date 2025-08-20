@@ -12,4 +12,9 @@ class AboutUsFinalSection extends Model
     {
         return $this->hasMany(AboutUsFinalSectionItem::class);
     }
+
+    public function getCreatedAtAttribute($value)
+    {
+        return \Carbon\Carbon::parse($value)->format('d/m/Y H:i');
+    }
 }

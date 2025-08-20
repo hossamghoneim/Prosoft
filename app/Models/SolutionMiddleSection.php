@@ -9,7 +9,7 @@ class SolutionMiddleSection extends Model
     protected $fillable = [
         'solution_id',
         'title',
-        'is_active'
+        'is_active',
     ];
 
     public function solution()
@@ -20,5 +20,10 @@ class SolutionMiddleSection extends Model
     public function solutionMiddleSectionItems()
     {
         return $this->hasMany(SolutionMiddleSectionItem::class);
+    }
+
+    public function getCreatedAtAttribute($value)
+    {
+        return \Carbon\Carbon::parse($value)->format('d/m/Y H:i');
     }
 }

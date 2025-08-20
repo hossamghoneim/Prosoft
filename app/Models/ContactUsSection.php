@@ -12,4 +12,9 @@ class ContactUsSection extends Model
     {
         return $this->belongsTo(ContactUsContent::class);
     }
+
+    public function getCreatedAtAttribute($value)
+    {
+        return \Carbon\Carbon::parse($value)->format('d/m/Y H:i');
+    }
 }

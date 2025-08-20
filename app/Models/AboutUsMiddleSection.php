@@ -13,8 +13,8 @@ class AboutUsMiddleSection extends Model
         return $this->hasMany(AboutUsMiddleSectionItem::class, 'about_us_middle_section_id');
     }
 
-    public function getBackgroundImageAttribute($value)
+    public function getCreatedAtAttribute($value)
     {
-        return $value ? asset($value) : null;
+        return \Carbon\Carbon::parse($value)->format('d/m/Y H:i');
     }
 }

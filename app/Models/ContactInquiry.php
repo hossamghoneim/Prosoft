@@ -15,4 +15,14 @@ class ContactInquiry extends Model
         'inquiry_type',
         'message',
     ];
+
+    public function getCreatedAtAttribute($value)
+    {
+        return \Carbon\Carbon::parse($value)->format('d/m/Y H:i');
+    }
+
+    public function getInquiryTypeNameAttribute()
+    {
+        return \App\Enums\InquiryTypesEnum::from($this->inquiry_type)->name();
+    }
 }

@@ -19,8 +19,8 @@ class PartnerBannerSectionItem extends Model
         return $this->belongsTo(PartnerBannerSection::class, 'partner_banner_section_id');
     }
 
-    public function getIconAttribute($value)
+    public function getCreatedAtAttribute($value)
     {
-        return $value ? asset($value) : null;
+        return \Carbon\Carbon::parse($value)->format('d/m/Y H:i');
     }
 }

@@ -8,8 +8,8 @@ class AboutUsBannerSection extends Model
 {
     protected $fillable = ['title', 'description', 'button_text', 'button_url', 'video_url', 'is_active'];
 
-    public function getVideoUrlAttribute($value)
+    public function getCreatedAtAttribute($value)
     {
-        return $value ? asset($value) : null;
+        return \Carbon\Carbon::parse($value)->format('d/m/Y H:i');
     }
 }

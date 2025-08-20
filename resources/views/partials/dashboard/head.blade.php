@@ -1,6 +1,6 @@
 <head>
     <base href="">
-    <title>Car Parts - Dashboard</title>
+    <title>Prosoft - Dashboard</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="canonical" href="https://preview.keenthemes.com/metronic8" />

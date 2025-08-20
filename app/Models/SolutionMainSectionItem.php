@@ -11,21 +11,21 @@ class SolutionMainSectionItem extends Model
         'title',
         'image',
         'order',
-        'is_active'
+        'is_active',
     ];
-
-    public function getImageAttribute($value)
-    {
-        return $value ? asset($value) : null;
-    }
 
     public function solutionMainSection()
     {
-        return $this->belongsTo(SolutionMainSection::class, 'solution_main_section_id');
+        return $this->belongsTo(SolutionMainSection::class);
     }
 
-    public function solutionMainSectionItemContents()
+    public function solutionMainSectionItemContent()
     {
-        return $this->hasMany(SolutionMainSectionItemContent::class);
+        return $this->hasOne(SolutionMainSectionItemContent::class);
+    }
+
+    public function getCreatedAtAttribute($value)
+    {
+        return \Carbon\Carbon::parse($value)->format('d/m/Y H:i');
     }
 }

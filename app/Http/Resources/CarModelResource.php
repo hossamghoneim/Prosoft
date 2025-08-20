@@ -20,7 +20,7 @@ class CarModelResource extends JsonResource
             'name_ar' => $this->name_ar,
             'name_en' => $this->name_en,
             'created_at' => $this->created_at,
-            'brand' => new BrandResource($this->whenLoaded('brand')),
+            'brand' => new ServiceHeroSectionResource($this->whenLoaded('brand')),
         ];
     }
 }

@@ -10,12 +10,11 @@ class ServiceBannerSection extends Model
         'title',
         'description',
         'image',
-
         'is_active',
     ];
 
-    public function getImageAttribute($value)
+    public function getCreatedAtAttribute($value)
     {
-        return $value ? asset($value) : null;
+        return \Carbon\Carbon::parse($value)->format('d/m/Y H:i');
     }
 }

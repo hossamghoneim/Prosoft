@@ -20,8 +20,8 @@ class AboutUsFinalSectionItem extends Model
         return $this->belongsTo(AboutUsFinalSection::class);
     }
 
-    public function getIconAttribute($value)
+    public function getCreatedAtAttribute($value)
     {
-        return $value ? asset($value) : null;
+        return \Carbon\Carbon::parse($value)->format('d/m/Y H:i');
     }
 }

@@ -2,7 +2,7 @@
 <html lang="{{ getLocale() }}" direction="{{ isArabic() ? 'ltr' : 'rtl' }}" style="direction:{{ app()->getLocale() == 'ar' ? 'ltr' : 'rtl' }}">
 <!--begin::Head-->
 <head>
-    <title>Car Parts</title>
+    <title>Prosoft</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="csrf-token" content="{{ csrf_token() }}">

@@ -16,4 +16,9 @@ class ServiceSection extends Model
     public function items() {
         return $this->hasMany(ServiceSectionItem::class);
     }
+
+    public function getCreatedAtAttribute($value)
+    {
+        return \Carbon\Carbon::parse($value)->format('d/m/Y H:i');
+    }
 }

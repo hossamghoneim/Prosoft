@@ -7,7 +7,7 @@ use App\Http\Requests\StoreCarModelRequest;
 use App\Http\Requests\UpdateCarModelRequest;
 use App\Http\Resources\CarModelResource;
 use App\Models\CarModel;
-use App\Services\BrandService;
+use App\Services\ServiceHeroSectionService;
 use App\Services\CarModelService;
 use App\Traits\HttpResponsesTrait;
 use App\Http\Controllers\Controller;
@@ -20,19 +20,19 @@ class CarModelController extends Controller
     use HttpResponsesTrait;
     private string $resource = CarModelResource::class;
     protected CarModelService $carModelService;
-    protected BrandService $brandService;
+    protected ServiceHeroSectionService $serviceHeroSectionService;
 
-    public function __construct(CarModelService $carModelService, BrandService $brandService)
+    public function __construct(CarModelService $carModelService, ServiceHeroSectionService $serviceHeroSectionService)
     {
         parent::__construct('car-models');
         $this->carModelService = $carModelService;
-        $this->brandService = $brandService;
+        $this->serviceHeroSectionService = $serviceHeroSectionService;
     }
 
     public function index(): View|AnonymousResourceCollection
     {
         $this->authorize(PermissionActions::LIST_VIEW);
-        $brands = $this->brandService->index();
+        $brands = $this->serviceHeroSectionService->index();
 
         if (request()->ajax()){
             $carModels = $this->carModelService->index();
@@ -49,7 +49,7 @@ class CarModelController extends Controller
     public function create(): View
     {
         $this->authorize(PermissionActions::CREATE);
-        $brands = $this->brandService->index();
+        $brands = $this->serviceHeroSectionService->index();
 
         return view('dashboard.car_models.create', [ 'brands' => $brands ]);
     }
@@ -57,7 +57,7 @@ class CarModelController extends Controller
     public function edit(CarModel $carModel): View
     {
         $this->authorize(PermissionActions::CREATE);
-        $brands = $this->brandService->index();
+        $brands = $this->serviceHeroSectionService->index();
 
         return view('dashboard.car_models.edit',compact( 'carModel', 'brands'));
     }

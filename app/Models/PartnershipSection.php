@@ -13,8 +13,8 @@ class PartnershipSection extends Model
         return $this->hasMany(Partner::class);
     }
 
-    public function getImageAttribute($value)
+    public function getCreatedAtAttribute($value)
     {
-        return $value ? asset($value) : null;
+        return \Carbon\Carbon::parse($value)->format('d/m/Y H:i');
     }
 }

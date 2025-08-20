@@ -15,4 +15,9 @@ class AboutUsFeature extends Model
     {
         return $this->hasMany(AboutUsFeatureItem::class, 'about_us_feature_id');
     }
+
+    public function getCreatedAtAttribute($value)
+    {
+        return \Carbon\Carbon::parse($value)->format('d/m/Y H:i');
+    }
 }

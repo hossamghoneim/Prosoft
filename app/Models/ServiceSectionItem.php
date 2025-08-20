@@ -15,13 +15,13 @@ class ServiceSectionItem extends Model
         'is_active',
     ];
 
-    public function section()
+    public function serviceSection()
     {
         return $this->belongsTo(ServiceSection::class);
     }
 
-    public function getIconAttribute($value)
+    public function getCreatedAtAttribute($value)
     {
-        return $value ? asset($value) : null;
+        return \Carbon\Carbon::parse($value)->format('d/m/Y H:i');
     }
 }
