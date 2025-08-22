@@ -141,14 +141,14 @@
                 <!--begin::Notifications-->
                 <div class="d-flex align-items-center ms-1 ms-lg-3">
                     <!--begin::Menu- wrapper-->
-                    <div class="btn btn-icon btn-icon-muted btn-active-light btn-active-color-primary w-30px h-30px w-md-40px h-md-40px" data-kt-menu-trigger="click" data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
+                    {{-- <div class="btn btn-icon btn-icon-muted btn-active-light btn-active-color-primary w-30px h-30px w-md-40px h-md-40px" data-kt-menu-trigger="click" data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
                         <!--begin::Svg Icon | path: icons/duotune/general/gen022.svg-->
                         <a href="javascript:" class="btn btn-icon btn-light pulse pulse-primary">
                             <i class="bi bi-bell-fill fs-1"></i>
                             <span class="pulse-ring border-2"></span>
                         </a>
                         <!--end::Svg Icon-->
-                    </div>
+                    </div> --}}
                     <!--begin::Menu-->
                     <div class="menu menu-sub menu-sub-dropdown menu-column w-350px w-lg-375px" data-kt-menu="true">
                         <!--begin::Heading-->
@@ -222,11 +222,11 @@
                         <!--end::Menu separator-->
                         <!--begin::Menu item-->
                         <div class="menu-item px-5" data-kt-menu-trigger="hover" data-kt-menu-placement="left-start">
-                            <a href="#" class="menu-link px-5">
+                            {{-- <a href="#" class="menu-link px-5">
 													<span class="menu-title position-relative">{{__("Language")}}
 													<span class="fs-8 rounded bg-light px-3 py-2 position-absolute translate-middle-y top-50 end-0">{{ isArabic() ?  __("Arabic") : __("English") }}
 													<img class="w-15px h-15px rounded-1 ms-2" src="{{asset('dashboard-assets/media/flags/' . ( isArabic() ? 'saudi-arabia' : 'united-states' ) . '.svg')}}" alt="" /></span></span>
-                            </a>
+                            </a> --}}
                             <!--begin::Menu sub-->
                             <div class="menu-sub menu-sub-dropdown w-175px py-4">
 
@@ -264,10 +264,10 @@
                         </div>
                         <!--end::Menu item-->
                         <!--begin::Menu separator-->
-                        <div class="separator my-2"></div>
+                        {{-- <div class="separator my-2"></div> --}}
                         <!--end::Menu separator-->
                         <!--begin::Menu item-->
-                        <div class="menu-item px-5">
+                        {{-- <div class="menu-item px-5">
                             <div class="menu-content px-5">
                                 <label class="form-check form-switch form-check-custom form-check-solid pulse pulse-success" for="toggle-notifications">
                                     <input class="form-check-input w-30px h-20px" type="checkbox" value="1" name="mode" id="toggle-notifications"  />
@@ -275,7 +275,7 @@
                                     <span class="form-check-label text-gray-600 fs-7">{{__("Notifications")}}</span>
                                 </label>
                             </div>
-                        </div>
+                        </div> --}}
                         <!--end::Menu item-->
                     </div>
                     <!--end::User account menu-->

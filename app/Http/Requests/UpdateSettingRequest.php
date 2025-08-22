@@ -34,6 +34,10 @@ class UpdateSettingRequest extends FormRequest
             'phone'         => [  'nullable', 'regex:' . RegexEnum::PHONE->value ],
             'meta_tag_description_ar' => [ 'nullable' , 'string' , 'max:255'  ],
             'meta_tag_description_en' => [ 'nullable' , 'string' , 'max:255'  ],
+            'footer_description' => [ 'nullable' , 'string' , 'max:1000'  ],
+            'footer_linkedin_url' => [ 'nullable', 'url' , 'string' , 'max:255'  ],
+            'footer_banner_image' => [ 'nullable', 'image' , 'mimes:jpeg,png,jpg,webp,svg' , 'max:5120'  ],
+            'footer_logo' => [ 'nullable', 'image' , 'mimes:svg,png,jpg,jpeg' , 'max:2048'  ],
             ];
     }
 }

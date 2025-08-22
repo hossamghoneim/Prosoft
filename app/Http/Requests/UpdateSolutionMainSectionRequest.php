@@ -46,3 +46,5 @@ class UpdateSolutionMainSectionRequest extends FormRequest
         ];
     }
 }
+
+

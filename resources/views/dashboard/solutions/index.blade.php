@@ -123,3 +123,4 @@
     <script src="{{ asset('js/dashboard/datatables/datatables.bundle.js') }}"></script>
     <script src="{{ asset('js/dashboard/datatables/solutions.js') }}"></script>
 @endpush
+

@@ -21,23 +21,8 @@ class HomeSecondarySection extends Model
         'third_card_description'
     ];
 
-    public function getBackgroundImageAttribute($value)
+    public function getCreatedAtAttribute($value)
     {
-        return $value ? asset($value) : null;
-    }
-
-    public function getFirstCardLogoAttribute($value)
-    {
-        return $value ? asset($value) : null;
-    }
-
-    public function getSecondCardLogoAttribute($value)
-    {
-        return $value ? asset($value) : null;
-    }
-
-    public function getThirdCardLogoAttribute($value)
-    {
-        return $value ? asset($value) : null;
+        return \Carbon\Carbon::parse($value)->format('d/m/Y H:i');
     }
 }

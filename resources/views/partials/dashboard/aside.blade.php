@@ -5,8 +5,8 @@
     <!--begin::Brand-->
     <div class="aside-logo w-100 h-75px" id="kt_aside_logo">
         <!--begin::Logo-->
-        <a href="{{ route('dashboard.index') }}" class="m-auto">
-            <img alt="Logo" src="{{ asset('dashboard-assets/media/car.png') }}" class="h-40px logo" />
+        <a href="{{ route('dashboard.index') }}" class="m-auto"></a>
+            <img alt="Logo" src="{{ asset('logo.svg') }}" class="h-15px logo" />
         </a>
         <!--end::Logo-->
         <!--begin::Aside toggler-->
@@ -231,6 +231,53 @@
                                 <i class="fa fa-map-marker"></i>
                             </span>
                             <span class="menu-title"> {{ __('Locations') }}</span>
+                        </a>
+                    </div>
+                @endcan
+
+                @canany(['list_view@home-hero-sections', 'list_view@home-primary-sections', 'list_view@home-secondary-sections'])
+                    <div class="menu-item mb-3">
+                        <div class="menu-content pt-8 pb-0">
+                            <span class="menu-section text-muted text-uppercase fs-8 ls-1">{{ __('Home') }}</span>
+                        </div>
+                    </div>
+                @endcanany
+
+                @can('list_view@home-hero-sections')
+                    <div class="menu-item">
+                        <a class="menu-link {{ isTabActive('home-hero-sections') }}"
+                            href="{{ route('dashboard.home-hero-sections.index') }}" data-bs-toggle="tooltip"
+                            data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
+                            <span class="menu-icon">
+                                <i class="fa fa-home"></i>
+                            </span>
+                            <span class="menu-title"> {{ __('Hero Section') }}</span>
+                        </a>
+                    </div>
+                @endcan
+
+                @can('list_view@home-primary-sections')
+                    <div class="menu-item">
+                        <a class="menu-link {{ isTabActive('home-primary-sections') }}"
+                            href="{{ route('dashboard.home-primary-sections.index') }}" data-bs-toggle="tooltip"
+                            data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
+                            <span class="menu-icon">
+                                <i class="fa fa-star"></i>
+                            </span>
+                            <span class="menu-title"> {{ __('Primary Section') }}</span>
+                        </a>
+                    </div>
+                @endcan
+
+                @can('list_view@home-secondary-sections')
+                    <div class="menu-item">
+                        <a class="menu-link {{ isTabActive('home-secondary-sections') }}"
+                            href="{{ route('dashboard.home-secondary-sections.index') }}" data-bs-toggle="tooltip"
+                            data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
+                            <span class="menu-icon">
+                                <i class="fa fa-layer-group"></i>
+                            </span>
+                            <span class="menu-title"> {{ __('Secondary Section') }}</span>
                         </a>
                     </div>
                 @endcan

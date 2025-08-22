@@ -13,8 +13,8 @@ class HomePrimarySection extends Model
         'is_active',
     ];
 
-    public function getImageAttribute($value)
+    public function getCreatedAtAttribute($value)
     {
-        return $value ? asset($value) : null;
+        return \Carbon\Carbon::parse($value)->format('d/m/Y H:i');
     }
 }

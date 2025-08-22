@@ -52,3 +52,5 @@ class SolutionHeroSectionRepository implements SolutionHeroSectionRepositoryInte
         return SolutionHeroSection::destroy($id);
     }
 }
+
+

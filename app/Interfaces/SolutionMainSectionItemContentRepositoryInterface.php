@@ -12,3 +12,5 @@ interface SolutionMainSectionItemContentRepositoryInterface
     public function count();
     public function findByItem($itemId);
 }
+
+

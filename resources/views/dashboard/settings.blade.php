@@ -34,15 +34,8 @@
 
                     <!--begin::Nav item-->
                     <li class="nav-item">
-                        <a class="nav-link text-active-primary me-6  setting-label active" id="general-settings-label"
-                           href="javascript:" onclick="changeSettingView('general')">{{ __("General") }}</a>
-                    </li>
-                    <!--end::Nav item-->
-
-                    <!--begin::Nav item-->
-                    <li class="nav-item">
-                        <a class="nav-link text-active-primary me-6 setting-label" id="seo-settings-label"
-                           href="javascript:" onclick="changeSettingView('seo')">{{ __("Seo") }}</a>
+                        <a class="nav-link text-active-primary me-6 setting-label active" id="footer-settings-label"
+                           href="javascript:" onclick="changeSettingView('footer')">{{ __("Footer") }}</a>
                     </li>
                     <!--end::Nav item-->
 
@@ -56,26 +49,29 @@
 
     <!--begin::Form-->
     <form action="{{ route('dashboard.settings.update') }}" class="form submitted-form" method="post"
-          data-redirection-url="{{ route('dashboard.settings.index') }}">
+          data-redirection-url="{{ route('dashboard.settings.index') }}" enctype="multipart/form-data">
         @csrf
         @method('PUT')
 
-        <!-- Begin :: General Settings Card -->
-        <input type="hidden" name="setting_type" value="general" id="setting-type-inp">
+        <!-- Begin :: Footer Settings Card -->
+        <input type="hidden" name="setting_type" value="footer" id="setting-type-inp">
 
-        <!-- Begin :: General Settings Card -->
-        <div class="card card-flush setting-card" id="general-settings-card">
+
+
+
+        <!-- Begin :: Footer Settings Card -->
+        <div class="card card-flush setting-card" id="footer-settings-card">
             <!--begin::Card header-->
             <div class="card-header pt-8">
 
                 <div class="card-title">
-                    <h2>{{ __("General") }}</h2>
+                    <h2>{{ __("Footer") }}</h2>
                 </div>
 
                 <div class="card-title">
 
                     <!-- begin :: Submit btn -->
-                    <button type="submit" class="btn btn-primary mx-4" id="submit-btn-general">
+                    <button type="submit" class="btn btn-primary mx-4" id="submit-btn-footer">
 
                         <span class="indicator-label">{{ __("Save") }}</span>
 
@@ -89,155 +85,6 @@
                     <!-- end   :: Submit btn -->
 
                 </div>
-            </div>
-            <!--end::Card header-->
-
-            <!-- Begin :: Card body -->
-            <div class="card-body">
-
-                <!-- Begin :: Input group -->
-                <div class="fv-row row mb-15">
-
-                    <!-- Begin :: Col -->
-                    <div class="col-md-6">
-
-                        <label class="form-label">{{ __("Facebook") }}</label>
-                        <input type="text" class="form-control" name="facebook_url"
-                               value="{{ $settings['facebook_url'] ?? '' }}" id="facebook_url_inp"
-                               placeholder="{{ __("Enter the facebook page url") }}">
-                        <p class="invalid-feedback" id="facebook_url"></p>
-
-                    </div>
-                    <!-- End   :: Col -->
-
-                    <!-- Begin :: Col -->
-                    <div class="col-md-6">
-
-                        <label class="form-label">{{ __("X") }}</label>
-                        <input type="text" class="form-control" name="x_url"
-                               value="{{ $settings['x_url'] ?? '' }}" id="x_url_inp"
-                               placeholder="{{ __("Enter the x page url") }}">
-                        <p class="invalid-feedback" id="x_url"></p>
-
-                    </div>
-                    <!-- End   :: Col -->
-
-                </div>
-                <!-- End   :: Input group -->
-
-                <!-- Begin :: Input group -->
-                <div class="fv-row row mb-15">
-
-                    <!-- Begin :: Col -->
-                    <div class="col-md-6">
-
-                        <label class="form-label">{{ __("Instagram") }}</label>
-                        <input type="text" class="form-control" name="instagram_url"
-                               value="{{ $settings['instagram_url'] ?? '' }}" id="instagram_url_inp"
-                               placeholder="{{ __("Enter the instagram page url") }}">
-                        <p class="invalid-feedback" id="instagram_url"></p>
-
-                    </div>
-                    <!-- End   :: Col -->
-
-                    <!-- Begin :: Col -->
-                    <div class="col-md-6">
-
-                        <label class="form-label">{{ __("Youtube") }}</label>
-                        <input type="text" class="form-control" name="youtube_url"
-                               value="{{ $settings['youtube_url'] ?? '' }}" id="youtube_url_inp"
-                               placeholder="{{ __("Enter the youtube channel url") }}">
-                        <p class="invalid-feedback" id="youtube_url"></p>
-
-                    </div>
-                    <!-- End   :: Col -->
-
-                </div>
-                <!-- End   :: Input group -->
-
-                <!-- Begin :: Input group -->
-                <div class="fv-row row mb-15">
-
-                    <!-- Begin :: Col -->
-                    <div class="col-md-6">
-
-                        <label class="form-label">{{ __("Snapchat") }}</label>
-                        <input type="text" class="form-control" name="snapchat_url"
-                               value="{{ $settings['snapchat_url'] ?? '' }}" id="snapchat_url_inp"
-                               placeholder="{{ __("Enter the snapchat url") }}">
-                        <p class="invalid-feedback" id="snapchat_url"></p>
-
-                    </div>
-                    <!-- End   :: Col -->
-
-                    <!-- Begin :: Col -->
-                    <div class="col-md-6">
-
-                        <label class="form-label">{{ __("Email") }}</label>
-                        <input type="text" class="form-control" name="email"
-                               value="{{ $settings['email'] ?? '' }}" id="email_inp"
-                               placeholder="{{ __("Enter the email") }}">
-                        <p class="invalid-feedback" id="email"></p>
-
-                    </div>
-                    <!-- End   :: Col -->
-
-                </div>
-                <!-- End   :: Input group -->
-
-                <!-- Begin :: Input group -->
-                <div class="fv-row row mb-15">
-
-                    <!-- Begin :: Col -->
-                    <div class="col-md-6">
-
-                        <label class="form-label">{{ __("Phone") }}</label>
-                        <input type="text" class="form-control" name="phone"
-                               value="{{ $settings['phone'] ?? '' }}" id="phone_inp"
-                               placeholder="{{ __("Enter the phone") }}">
-                        <p class="invalid-feedback" id="phone"></p>
-
-                    </div>
-                    <!-- End   :: Col -->
-
-
-                </div>
-                <!-- End   :: Input group -->
-
-
-            </div>
-            <!-- End   :: Card body -->
-
-        </div>
-        <!-- End   :: General Settings Card -->
-
-
-        <!-- Begin :: Seo Settings Card -->
-        <div class="card card-flush setting-card" style="display:none" id="seo-settings-card">
-            <!--begin::Card header-->
-            <div class="card-header pt-8">
-
-                <div class="card-title">
-                    <h2>Seo</h2>
-                </div>
-
-                <div class="card-title">
-
-                    <!-- begin :: Submit btn -->
-                    <button type="submit" class="btn btn-primary mx-4" id="submit-btn-seo">
-
-                        <span class="indicator-label">{{ __("Save") }}</span>
-
-                        <!-- begin :: Indicator -->
-                        <span class="indicator-progress">{{ __("Please wait ...") }}
-                            <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
-                    </span>
-                        <!-- end   :: Indicator -->
-
-                    </button>
-                    <!-- end   :: Submit btn -->
-
-                </div>
 
             </div>
             <!--end::Card header-->
@@ -249,13 +96,47 @@
                 <div class="fv-row row mb-15">
 
                     <!-- Begin :: Col -->
+                    <div class="col-md-12">
+
+                        <label class="form-label">{{ __("Description") }}</label>
+                        <textarea class="form-control form-control form-control" name="footer_description"
+                                  id="footer_description_inp"
+                                  data-kt-autosize="true">{{ $footerSettings['description'] ?? 'Prosoft is a specialized value-added distributor with 30+ years of experience in the enterprise IT space. We partner with global technology vendors to bring their solutions to market through our network of trusted experts.' }}</textarea>
+                        <p class="invalid-feedback" id="footer_description"></p>
+
+                    </div>
+                    <!-- End   :: Col -->
+
+                </div>
+                <!-- End   :: Input group -->
+
+                <!-- Begin :: Input group -->
+                <div class="fv-row row mb-15">
+
+                    <!-- Begin :: Col -->
                     <div class="col-md-6">
 
-                        <label class="form-label">{{ __("Meta tags description in arabic") }}</label>
-                        <textarea class="form-control form-control form-control" name="meta_tag_description_ar"
-                                  id="meta_tag_description_ar_inp"
-                                  data-kt-autosize="true">{{ $settings['meta_tag_description_ar'] ?? '' }}</textarea>
-                        <p class="invalid-feedback" id="meta_tag_description_ar"></p>
+                        <label class="form-label">{{ __("LinkedIn URL") }}</label>
+                        <input type="text" class="form-control" name="footer_linkedin_url"
+                               value="{{ $footerSettings['linkedin_url'] ?? 'https://www.linkedin.com/company/prosoft-infomation-systems/' }}" id="footer_linkedin_url_inp"
+                               placeholder="{{ __("Enter the LinkedIn page url") }}">
+                        <p class="invalid-feedback" id="footer_linkedin_url"></p>
+
+                    </div>
+                    <!-- End   :: Col -->
+
+                </div>
+                <!-- End   :: Input group -->
+
+                <!-- Begin :: Input group -->
+                <div class="fv-row row mb-15">
+
+                    <!-- Begin :: Col -->
+                    <div class="col-md-6">
+
+                        <label class="form-label">{{ __("Banner Image") }}</label>
+                        <x-dashboard.upload-image-inp name="footer_banner_image" :image="$footerSettings['banner_image'] ?? null" placeholder="default.jpg" type="editable"></x-dashboard.upload-image-inp>
+                        <p class="invalid-feedback" id="footer_banner_image"></p>
 
                     </div>
                     <!-- End   :: Col -->
@@ -263,11 +144,9 @@
                     <!-- Begin :: Col -->
                     <div class="col-md-6">
 
-                        <label class="form-label">{{ __("Meta tags description in english") }}</label>
-                        <textarea class="form-control form-control form-control" name="meta_tag_description_en"
-                                  id="meta_tag_description_en_inp"
-                                  data-kt-autosize="true">{{ $settings['meta_tag_description_en'] ?? '' }}</textarea>
-                        <p class="invalid-feedback" id="meta_tag_description_en"></p>
+                        <label class="form-label">{{ __("Logo") }}</label>
+                        <x-dashboard.upload-image-inp name="footer_logo" :image="$footerSettings['logo'] ?? null" placeholder="default.jpg" type="editable"></x-dashboard.upload-image-inp>
+                        <p class="invalid-feedback" id="footer_logo"></p>
 
                     </div>
                     <!-- End   :: Col -->
@@ -279,7 +158,7 @@
             <!-- End   :: Card body -->
 
         </div>
-        <!-- End   :: Seo Settings Card -->
+        <!-- End   :: Footer Settings Card -->
 
     </form>
     <!--end::Form-->
@@ -289,34 +168,18 @@
 {{--    <script src="{{ asset('dashboard-assets/plugins/custom/tinymce/tinymce.bundle.js') }}"></script>--}}
     <script>
 
-        let changeSettingView = (tab) => {
 
-            $('.setting-card').hide();
-            $('.setting-label').removeClass('active');
-
-            $("#" + tab + '-settings-card').show()
-            $("#" + tab + '-settings-label').addClass('active')
-
-            $("#setting-type-inp").val(tab);
-        };
 
         $(document).ready(() => {
+            console.log('Settings page loaded, initializing...');
 
-            initTinyMc(true);
+            // Initialize TinyMCE only if needed
+            if (typeof initTinyMc === 'function') {
+                initTinyMc(true);
+            }
 
-            $('.image-upload-inp').click(function () {
 
-                $(this).prev().trigger('click');
 
-            });
-
-            $('[id*=-uploader]').change(function () {
-
-                let fileName = $(this)[0].files[0].name;
-
-                $(this).next().html(`<i class="bi bi-upload fs-8" ></i> ${fileName} `);
-
-            });
 
         });
 

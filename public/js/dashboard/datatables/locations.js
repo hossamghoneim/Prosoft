@@ -46,7 +46,7 @@ let KTDatatable = function () {
                 {
                     data: 'is_active',
                     render: function (data, type, row) {
-                        if (data === true || data === 1) {
+                        if (data == true || data == 1) {
                             return `<span class="badge badge-light-success">
                                 <i class="fa fa-check-circle me-1"></i> ${translate('Active')}
                             </span>`;

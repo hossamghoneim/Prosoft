@@ -31,3 +31,5 @@ class SolutionMainSectionResource extends JsonResource
         ];
     }
 }
+
+

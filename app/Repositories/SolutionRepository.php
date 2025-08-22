@@ -51,3 +51,4 @@ class SolutionRepository implements SolutionRepositoryInterface
         return Solution::destroy($id);
     }
 }
+

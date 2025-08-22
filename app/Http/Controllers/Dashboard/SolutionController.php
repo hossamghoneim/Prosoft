@@ -95,3 +95,4 @@ class SolutionController extends Controller
             return $this->notFoundError('Solution doesn\'t exist');
     }
 }
+

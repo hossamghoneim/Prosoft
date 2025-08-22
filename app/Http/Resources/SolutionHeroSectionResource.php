@@ -28,3 +28,5 @@ class SolutionHeroSectionResource extends JsonResource
         ];
     }
 }
+
+

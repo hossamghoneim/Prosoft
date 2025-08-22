@@ -6,6 +6,7 @@ use App\Enums\PermissionActions;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UpdateSettingRequest;
 use App\Http\Resources\SettingResource;
+use App\Models\Setting;
 use App\Services\SettingService;
 use App\Traits\HttpResponsesTrait;
 use Illuminate\Contracts\View\View;
@@ -28,7 +29,12 @@ class SettingController extends Controller
     {
         $this->authorize(PermissionActions::LIST_VIEW);
         $settings = $this->settingService->index()->pluck('value', 'key');
-        return view('dashboard.settings', compact('settings'));
+
+        // Get footer settings
+        $footerSetting = Setting::where('key', 'footer')->first();
+        $footerSettings = $footerSetting ? json_decode($footerSetting->value, true) : [];
+
+        return view('dashboard.settings', compact('settings', 'footerSettings'));
     }
     public function update(UpdateSettingRequest $request): Response
     {

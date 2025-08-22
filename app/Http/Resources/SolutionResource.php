@@ -24,3 +24,4 @@ class SolutionResource extends JsonResource
         ];
     }
 }
+

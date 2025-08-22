@@ -30,6 +30,9 @@ use App\Http\Controllers\Dashboard\AboutUsMiddleSectionItemController;
 use App\Http\Controllers\Dashboard\AboutUsFinalSectionController;
 use App\Http\Controllers\Dashboard\AboutUsFinalSectionItemController;
 use App\Http\Controllers\Dashboard\AboutUsBannerSectionController;
+use App\Http\Controllers\Dashboard\HomeHeroSectionController;
+use App\Http\Controllers\Dashboard\HomePrimarySectionController;
+use App\Http\Controllers\Dashboard\HomeSecondarySectionController;
 use App\Http\Controllers\Dashboard\SolutionController;
 use App\Http\Controllers\Dashboard\SolutionHeroSectionController;
 use App\Http\Controllers\Dashboard\SolutionMainSectionController;
@@ -99,9 +102,15 @@ Route::get('about-us-final-sections/check-exists', [AboutUsFinalSectionControlle
 Route::resource('about-us-final-sections',AboutUsFinalSectionController::class);
 Route::get('about-us-final-section-items/check-exists', [AboutUsFinalSectionItemController::class, 'checkExists'])->name('about-us-final-section-items.check-exists');
 Route::resource('about-us-final-section-items',AboutUsFinalSectionItemController::class);
-Route::get('about-us-banner-sections/check-exists', [AboutUsBannerSectionController::class, 'checkExists'])->name('about-us-banner-sections.check-exists');
-Route::resource('about-us-banner-sections',AboutUsBannerSectionController::class);
-Route::resource('solutions',SolutionController::class);
+    Route::get('about-us-banner-sections/check-exists', [AboutUsBannerSectionController::class, 'checkExists'])->name('about-us-banner-sections.check-exists');
+    Route::resource('about-us-banner-sections',AboutUsBannerSectionController::class);
+    Route::get('home-hero-sections/check-exists', [HomeHeroSectionController::class, 'checkExists'])->name('home-hero-sections.check-exists');
+    Route::resource('home-hero-sections',HomeHeroSectionController::class);
+    Route::get('home-primary-sections/check-exists', [HomePrimarySectionController::class, 'checkExists'])->name('home-primary-sections.check-exists');
+    Route::resource('home-primary-sections',HomePrimarySectionController::class);
+    Route::get('home-secondary-sections/check-exists', [HomeSecondarySectionController::class, 'checkExists'])->name('home-secondary-sections.check-exists');
+    Route::resource('home-secondary-sections',HomeSecondarySectionController::class);
+    Route::resource('solutions',SolutionController::class);
 Route::get('solution-hero-sections/check-exists', [SolutionHeroSectionController::class, 'checkExists'])->name('solution-hero-sections.check-exists');
 Route::resource('solution-hero-sections',SolutionHeroSectionController::class);
 Route::get('solution-main-sections/check-exists', [SolutionMainSectionController::class, 'checkExists'])->name('solution-main-sections.check-exists');
@@ -112,13 +121,13 @@ Route::get('solution-main-section-item-contents/check-exists', [SolutionMainSect
 Route::resource('solution-main-section-item-contents', SolutionMainSectionItemContentController::class)->parameters(['solution-main-section-item-contents' => 'content']);
 Route::get('solution-middle-sections/check-exists', [SolutionMiddleSectionController::class, 'checkExists'])->name('solution-middle-sections.check-exists');
 Route::resource('solution-middle-sections',SolutionMiddleSectionController::class);
-    Route::resource('car-models',CarModelController::class);
-    Route::resource('products',ProductController::class);
-    Route::resource('tags',TagController::class);
-    Route::resource('users',UserController::class)->only(['index', 'destroy']);
-    Route::resource('categories',CategoryController::class)->except(['edit','create']);
-    Route::resource('orders',OrderController::class);
-    Route::post('change-status/{order}',[OrderController::class, 'changeStatus']);
+    // Route::resource('car-models',CarModelController::class);
+    // Route::resource('products',ProductController::class);
+    // Route::resource('tags',TagController::class);
+    // Route::resource('users',UserController::class)->only(['index', 'destroy']);
+    // Route::resource('categories',CategoryController::class)->except(['edit','create']);
+    // Route::resource('orders',OrderController::class);
+    // Route::post('change-status/{order}',[OrderController::class, 'changeStatus']);
     Route::get('settings',[SettingController::class,'index'])->name('settings.index');
     Route::put('settings',[SettingController::class,'update'])->name('settings.update');
     Route::get('permissions',[PermissionController::class,'index']);
@@ -130,9 +139,9 @@ Route::resource('solution-middle-sections',SolutionMiddleSectionController::clas
     /** admin settings update **/
 
     /** Trash routes */
-    Route::get('trash/{modelName?}','TrashController@index')->name('trash');
-    Route::get('trash/{modelName}/{id}','TrashController@restore');
-    Route::delete('trash/{modelName}/{id}','TrashController@forceDelete');
+    // Route::get('trash/{modelName?}','TrashController@index')->name('trash');
+    // Route::get('trash/{modelName}/{id}','TrashController@restore');
+    // Route::delete('trash/{modelName}/{id}','TrashController@forceDelete');
     /** Trash routes */
 
 });

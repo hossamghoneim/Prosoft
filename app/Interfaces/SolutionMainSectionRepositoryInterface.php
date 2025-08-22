@@ -11,3 +11,5 @@ interface SolutionMainSectionRepositoryInterface
     public function delete($id);
     public function count();
 }
+
+
