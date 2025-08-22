@@ -38,11 +38,17 @@ class SolutionMainSectionService
         // Set is_active to true
         $attributes['is_active'] = true;
 
+        // Handle enable_grid_view checkbox - set to false if not present
+        $attributes['enable_grid_view'] = isset($attributes['enable_grid_view']) ? true : false;
+
         return $this->solutionMainSectionRepository->create($attributes);
     }
 
     public function update(array $attributes, int $id)
     {
+        // Handle enable_grid_view checkbox - set to false if not present
+        $attributes['enable_grid_view'] = isset($attributes['enable_grid_view']) ? true : false;
+
         return $this->solutionMainSectionRepository->update($id, $attributes);
     }
 

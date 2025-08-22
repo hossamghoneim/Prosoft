@@ -25,6 +25,7 @@ class StoreSolutionMainSectionRequest extends FormRequest
             'title' => 'required|string|max:100',
             'description' => 'required|string|max:500',
             'solution_id' => 'required|exists:solutions,id',
+            'enable_grid_view' => 'boolean',
         ];
     }
 
@@ -43,6 +44,7 @@ class StoreSolutionMainSectionRequest extends FormRequest
             'description.string' => 'The description must be a string.',
             'solution_id.required' => 'The solution field is required.',
             'solution_id.exists' => 'The selected solution is invalid.',
+            'enable_grid_view.boolean' => 'The enable grid view field must be true or false.',
         ];
     }
 }

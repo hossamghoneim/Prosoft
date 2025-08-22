@@ -102,6 +102,19 @@
                         </div>
                         <!-- end   :: Column -->
 
+                        <!-- begin :: Column -->
+                        <div class="col-md-12 fv-row">
+                            <div class="mb-4"></div>
+                            <div class="form-check form-switch form-check-custom form-check-solid">
+                                <input class="form-check-input" type="checkbox" name="enable_grid_view" id="enable_grid_view_inp" value="1" {{ old('enable_grid_view', $solutionMainSection->enable_grid_view) ? 'checked' : '' }} />
+                                <label class="form-check-label" for="enable_grid_view_inp">
+                                    {{ __('Enable Grid View') }}
+                                </label>
+                            </div>
+                            <p class="invalid-feedback" id="enable_grid_view"></p>
+                        </div>
+                        <!-- end   :: Column -->
+
                     </div>
                     <!-- end   :: Row -->
 
