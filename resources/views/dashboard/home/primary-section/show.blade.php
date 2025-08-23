@@ -127,7 +127,7 @@
                         <div class="border rounded p-0" style="width: 100%; height: 400px; overflow: hidden; position: relative;">
                             <div style="width: 100%; height: 100%;">
                                 @if($homePrimarySection->image)
-                                    <img src="{{ $homePrimarySection->image }}"
+                                    <img src="{{ getFilePath($homePrimarySection->image) }}"
                                          alt="{{ $homePrimarySection->title }}"
                                          style="width: 100%; height: 100%; object-fit: cover;">
                                 @else

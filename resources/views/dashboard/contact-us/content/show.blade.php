@@ -58,8 +58,8 @@
                             <!-- begin :: Video -->
                             @if($contactUsContent->video_url)
                                 <video controls style="max-width: 400px; max-height: 300px;" class="rounded">
-                                    <source src="{{ $contactUsContent->video_url }}" type="video/mp4">
-                                    <source src="{{ $contactUsContent->video_url }}" type="video/webm">
+                                    <source src="{{ getFilePath($contactUsContent->video_url) }}" type="video/mp4">
+                                    <source src="{{ getFilePath($contactUsContent->video_url) }}" type="video/webm">
                                     {{ __('Your browser does not support the video tag.') }}
                                 </video>
                             @else

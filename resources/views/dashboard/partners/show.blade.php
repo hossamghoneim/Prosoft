@@ -58,7 +58,7 @@
                             <!-- begin :: Inner Logo -->
                             <label class="text-center fw-bold mb-4">{{ __('Inner Logo') }}</label>
                             @if($partner->inner_logo)
-                                <img src="{{ $partner->inner_logo }}" alt="Inner Logo"
+                                <img src="{{ getFilePath($partner->inner_logo) }}" alt="Inner Logo"
                                      class="img-fluid rounded" style="max-width: 200px; max-height: 200px;">
                             @else
                                 <div class="bg-light rounded d-flex align-items-center justify-content-center"
@@ -79,7 +79,7 @@
                             <!-- begin :: Outer Logo -->
                             <label class="text-center fw-bold mb-4">{{ __('Outer Logo') }}</label>
                             @if($partner->outer_logo)
-                                <img src="{{ $partner->outer_logo }}" alt="Outer Logo"
+                                <img src="{{ getFilePath($partner->outer_logo) }}" alt="Outer Logo"
                                      class="img-fluid rounded" style="max-width: 200px; max-height: 200px;">
                             @else
                                 <div class="bg-light rounded d-flex align-items-center justify-content-center"

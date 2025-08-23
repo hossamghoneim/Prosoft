@@ -15,7 +15,7 @@
         <!--begin::Mobile logo-->
         <div class="d-flex align-items-center flex-grow-1 flex-lg-grow-0" >
             <a class="d-lg-none" href="">
-                <img src="" class="h-25px logo"   alt="شعار  للبرمجيات حجم صغير ">
+                <img src="{{ asset('logo.svg') }}" class="h-10px logo"   alt="شعار  للبرمجيات حجم صغير ">
             </a>
         </div>
         <!--end::Mobile logo-->

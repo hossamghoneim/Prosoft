@@ -103,7 +103,7 @@
                             <!-- begin :: Background Image -->
                             @if($solutionMainSectionItemContent->background_image)
                                 <label class="text-center fw-bold mb-4">{{ __('Background Image') }}</label>
-                                <img src="{{ $solutionMainSectionItemContent->background_image }}" alt="Background Image"
+                                <img src="{{ getFilePath($solutionMainSectionItemContent->background_image) }}" alt="Background Image"
                                      class="img-fluid rounded" style="max-width: 300px; max-height: 300px;">
                             @else
                                 <div class="bg-light rounded d-flex align-items-center justify-content-center"
@@ -225,7 +225,7 @@
                             <!-- begin :: Logo -->
                             @if($solutionMainSectionItemContent->logo)
                                 <label class="text-center fw-bold mb-4">{{ __('Logo') }}</label>
-                                <img src="{{ $solutionMainSectionItemContent->logo }}" alt="Logo"
+                                <img src="{{ getFilePath($solutionMainSectionItemContent->logo) }}" alt="Logo"
                                      class="img-fluid rounded" style="max-width: 200px; max-height: 200px;">
                             @else
                                 <div class="bg-light rounded d-flex align-items-center justify-content-center"

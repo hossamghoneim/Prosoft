@@ -57,7 +57,7 @@
                         <div class="d-flex flex-column align-items-center">
                             <!-- begin :: Icon -->
                             @if($partnerBannerSectionItem->icon)
-                                <img src="{{ $partnerBannerSectionItem->icon }}" alt="Partner Banner Section Item Icon"
+                                <img src="{{ getFilePath($partnerBannerSectionItem->icon) }}" alt="Partner Banner Section Item Icon"
                                      class="img-fluid rounded" style="max-width: 200px; max-height: 200px;">
                             @else
                                 <div class="bg-light rounded d-flex align-items-center justify-content-center"

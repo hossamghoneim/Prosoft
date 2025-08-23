@@ -57,7 +57,7 @@
                         <div class="d-flex flex-column align-items-center">
                             <!-- begin :: Icon -->
                             @if($aboutUsMiddleSectionItem->icon)
-                                <img src="{{ $aboutUsMiddleSectionItem->icon }}" alt="About Us Middle Section Item Icon"
+                                <img src="{{ getFilePath($aboutUsMiddleSectionItem->icon) }}" alt="About Us Middle Section Item Icon"
                                      class="img-fluid rounded" style="max-width: 200px; max-height: 200px;">
                             @else
                                 <div class="bg-light rounded d-flex align-items-center justify-content-center"

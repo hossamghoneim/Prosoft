@@ -155,8 +155,8 @@
                             <div style="width: 100%; height: 100%;">
                                 @if($homeHeroSection->video_url)
                                     <video controls style="width: 100%; height: 100%; object-fit: cover;">
-                                        <source src="{{ $homeHeroSection->video_url }}" type="video/mp4">
-                                        <source src="{{ $homeHeroSection->video_url }}" type="video/webm">
+                                        <source src="{{ getFilePath($homeHeroSection->video_url) }}" type="video/mp4">
+                                        <source src="{{ getFilePath($homeHeroSection->video_url) }}" type="video/webm">
                                         {{ __('Your browser does not support the video tag.') }}
                                     </video>
                                 @else

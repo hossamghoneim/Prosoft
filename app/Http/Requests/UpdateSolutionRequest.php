@@ -24,9 +24,9 @@ class UpdateSolutionRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => ['required', 'string', 'max:20'],
+            'title' => ['required', 'string', 'max:22'],
             'image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,webp', 'max:5120'], // 5MB
-            'slug' => ['nullable', 'string', 'max:20', Rule::unique('solutions', 'slug')->ignore($this->route('solution'))],
+            'slug' => ['nullable', 'string', 'max:22', Rule::unique('solutions', 'slug')->ignore($this->route('solution'))],
         ];
     }
 }

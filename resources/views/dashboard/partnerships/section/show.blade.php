@@ -57,7 +57,7 @@
                         <div class="d-flex flex-column align-items-center">
                             <!-- begin :: Image -->
                             @if($partnershipSection->image)
-                                <img src="{{ $partnershipSection->image }}" alt="Partnership Section Image"
+                                <img src="{{ getFilePath($partnershipSection->image) }}" alt="Partnership Section Image"
                                      class="img-fluid rounded" style="max-width: 300px; max-height: 300px;">
                             @else
                                 <div class="bg-light rounded d-flex align-items-center justify-content-center"

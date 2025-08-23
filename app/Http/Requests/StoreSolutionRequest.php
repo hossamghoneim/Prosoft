@@ -23,9 +23,9 @@ class StoreSolutionRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => ['required', 'string', 'max:20'],
+            'title' => ['required', 'string', 'max:22'],
             'image' => ['required', 'image', 'mimes:jpeg,png,jpg,gif,webp', 'max:5120'], // 5MB
-            'slug' => ['nullable', 'string', 'max:20', 'unique:solutions,slug'],
+            'slug' => ['nullable', 'string', 'max:22', 'unique:solutions,slug'],
         ];
     }
 }
