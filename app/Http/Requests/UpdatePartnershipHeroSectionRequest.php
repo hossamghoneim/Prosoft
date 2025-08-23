@@ -13,7 +13,7 @@ class UpdatePartnershipHeroSectionRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return can('brands', PermissionActions::UPDATE->value);
+        return can('partnership-hero-sections', PermissionActions::UPDATE->value);
     }
 
     /**

@@ -13,7 +13,7 @@ class StoreServiceSectionItemRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return can('brands', PermissionActions::CREATE->value);
+        return can('service-section-items', PermissionActions::CREATE->value);
     }
 
     /**

@@ -13,7 +13,7 @@ class UpdateServiceHeroSectionRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return can('brands', PermissionActions::UPDATE->value);
+        return can('service-hero-sections', PermissionActions::UPDATE->value);
     }
 
     /**

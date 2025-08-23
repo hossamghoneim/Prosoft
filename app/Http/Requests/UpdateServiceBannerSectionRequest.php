@@ -13,7 +13,7 @@ class UpdateServiceBannerSectionRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return can('brands', PermissionActions::UPDATE->value);
+        return can('service-banner-sections', PermissionActions::UPDATE->value);
     }
 
     /**
