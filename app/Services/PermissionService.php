@@ -15,18 +15,8 @@ class PermissionService
 
     static array $modules = [
         'admins',
-        'vendors',
         'roles',
         'settings',
-        'reports',
-        'brands',
-        'car-models',
-        'products',
-        'orders',
-        'categories',
-        'tags',
-        'users',
-        'coupons',
         'recycle_bin',
         'service-hero-sections',
         'service-banner-sections',
