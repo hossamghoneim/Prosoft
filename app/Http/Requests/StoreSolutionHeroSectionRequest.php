@@ -24,7 +24,7 @@ class StoreSolutionHeroSectionRequest extends FormRequest
     {
         return [
             'solution_id' => ['required', 'exists:solutions,id'],
-            'title' => ['required', 'string', 'max:50'],
+            'title' => ['required', 'string', 'max:100'],
             'description' => ['required', 'string', 'max:500'],
             'button_text' => ['required', 'string', 'max:50'],
             'button_url' => ['required', 'string', 'max:200'],
