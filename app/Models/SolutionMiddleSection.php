@@ -8,7 +8,16 @@ class SolutionMiddleSection extends Model
 {
     protected $fillable = [
         'solution_id',
-        'title',
+        'main_title',
+        'first_card_icon',
+        'first_card_title',
+        'first_card_description',
+        'second_card_icon',
+        'second_card_title',
+        'second_card_description',
+        'third_card_icon',
+        'third_card_title',
+        'third_card_description',
         'is_active',
     ];
 

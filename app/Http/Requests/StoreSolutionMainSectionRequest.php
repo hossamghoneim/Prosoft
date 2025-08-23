@@ -22,7 +22,7 @@ class StoreSolutionMainSectionRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required|string|max:100',
+            'title' => 'required|string|max:60',
             'description' => 'required|string|max:500',
             'solution_id' => 'required|exists:solutions,id',
             'enable_grid_view' => 'boolean',
@@ -39,7 +39,7 @@ class StoreSolutionMainSectionRequest extends FormRequest
         return [
             'title.required' => 'The title field is required.',
             'title.string' => 'The title must be a string.',
-            'title.max' => 'The title may not be greater than 100 characters.',
+            'title.max' => 'The title may not be greater than 60 characters.',
             'description.required' => 'The description field is required.',
             'description.string' => 'The description must be a string.',
             'solution_id.required' => 'The solution field is required.',

@@ -25,13 +25,13 @@ let KTDatatable = function () {
                 data: function () {
                     let datatable = $('#kt_datatable');
                     let info = datatable.DataTable().page.info();
-                    datatable.DataTable().ajax.url(`/solution-middle-sections?page=${info.page + 1}&per_page=${info.length}`);
+                    datatable.DataTable().ajax.url(`/terms-condition-items?page=${info.page + 1}&per_page=${info.length}`);
                 }
             },
             columns: [
                 { data: 'id' },
-                { data: 'main_title' },
-                { data: 'solution.title' },
+                { data: 'title' },
+                { data: 'description' },
                 { data: 'is_active' },
                 { data: 'created_at' },
                 { data: null },
@@ -70,7 +70,7 @@ let KTDatatable = function () {
 
                                 <!--begin::Menu item-->
                                 <div class="menu-item px-3">
-                                    <a href="/solution-middle-sections/${row.id}/edit" class="menu-link px-3 d-flex justify-content-between edit-row" >
+                                    <a href="/terms-condition-items/${row.id}/edit" class="menu-link px-3 d-flex justify-content-between edit-row" >
                                         <span> ${translate('Edit')} </span>
                                         <span>  <i class="fa fa-edit text-primary"></i> </span>
                                     </a>
@@ -80,7 +80,7 @@ let KTDatatable = function () {
 
                                 <!--begin::Menu item-->
                                 <div class="menu-item px-3">
-                                    <a href="/solution-middle-sections/${row.id}" class="menu-link px-3 d-flex justify-content-between" >
+                                    <a href="/terms-condition-items/${row.id}" class="menu-link px-3 d-flex justify-content-between" >
                                         <span> ${translate('Show')} </span>
                                         <span>  <i class="fa fa-eye text-black-50"></i> </span>
                                     </a>
@@ -90,7 +90,7 @@ let KTDatatable = function () {
 
                                 <!--begin::Menu item-->
                                 <div class="menu-item px-3">
-                                    <a href="#" class="menu-link px-3 d-flex justify-content-between delete-row" data-row-id="${row.id}" data-type="${translate('solution middle section')}">
+                                    <a href="#" class="menu-link px-3 d-flex justify-content-between delete-row" data-row-id="${row.id}" data-type="${translate('terms condition item')}">
                                         <span> ${translate('Delete')} </span>
                                         <span>  <i class="fa fa-trash text-danger"></i> </span>
                                     </a>
@@ -110,7 +110,7 @@ let KTDatatable = function () {
         datatable.on('draw', function () {
             handleDeleteRows();
             KTMenu.createInstances();
-            $('body').append(`<script src='${lightboxPath}' ></script>`)
+            updateAddButtonState();
         });
     }
 
@@ -131,7 +131,7 @@ let KTDatatable = function () {
                     $.ajax({
                         method: 'delete',
                         headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
-                        url: '/solution-middle-sections/' + rowId,
+                        url: '/terms-condition-items/' + rowId,
                         success: () => {
 
                             setTimeout(() => {
@@ -142,6 +142,8 @@ let KTDatatable = function () {
                                     });
 
                             }, 1000)
+
+
 
                         },
                         error: (err) => {
@@ -154,6 +156,7 @@ let KTDatatable = function () {
                         }
                     });
 
+
                 } else if (result.dismiss === 'cancel') {
 
                     errorAlert(translate('was not deleted !'))
@@ -164,12 +167,114 @@ let KTDatatable = function () {
     }
 
 
+    // Handle add button click with validation
+    let handleAddButtonClick = function() {
+        $(document).on('click', 'a[href*="terms-condition-items/create"]', function(e) {
+            e.preventDefault();
+
+            $.ajax({
+                url: '/terms-condition-items/check-exists',
+                method: 'GET',
+                success: function(response) {
+                    if (response.exists) {
+                        errorAlert(response.message);
+                    } else {
+                        window.location.href = '/terms-condition-items/create';
+                    }
+                },
+                error: function() {
+                    errorAlert('An error occurred while checking availability.');
+                }
+            });
+        });
+    }
+
+    // Update add button state
+    let updateAddButtonState = function() {
+        $.ajax({
+            url: '/terms-condition-items/check-exists',
+            method: 'GET',
+            success: function(response) {
+                if (response.exists) {
+                    disableAddButton();
+                } else {
+                    enableAddButton();
+                }
+            },
+            error: function() {
+                console.error('Error checking terms condition items availability');
+            }
+        });
+    }
+
+    // Enable add button
+    let enableAddButton = function() {
+        const toolbar = document.querySelector('[data-kt-docs-table-toolbar="base"]');
+        if (!toolbar) return;
+
+        // Remove disabled button if exists
+        const disabledButton = toolbar.querySelector('button[disabled]');
+        if (disabledButton) {
+            disabledButton.remove();
+        }
+
+        // Add enabled link if not exists
+        const enabledLink = toolbar.querySelector('a[href*="terms-condition-items/create"]');
+        if (!enabledLink) {
+            const addLink = document.createElement('a');
+            addLink.href = '/terms-condition-items/create';
+            addLink.className = 'btn btn-primary';
+            addLink.setAttribute('data-bs-toggle', 'tooltip');
+            addLink.setAttribute('title', '');
+            addLink.innerHTML = `
+                <span class="svg-icon svg-icon-2">
+                    <i class="fa fa-plus fa-lg"></i>
+                </span>
+                Add new content
+            `;
+            toolbar.appendChild(addLink);
+
+            // Re-attach click event
+            handleAddButtonClick();
+        }
+    }
+
+    // Disable add button
+    let disableAddButton = function() {
+        const toolbar = document.querySelector('[data-kt-docs-table-toolbar="base"]');
+        if (!toolbar) return;
+
+        // Remove enabled link if exists
+        const enabledLink = toolbar.querySelector('a[href*="terms-condition-items/create"]');
+        if (enabledLink) {
+            enabledLink.remove();
+        }
+
+        // Add disabled button if not exists
+        const disabledButton = toolbar.querySelector('button[disabled]');
+        if (!disabledButton) {
+            const addButton = document.createElement('button');
+            addButton.className = 'btn btn-secondary';
+            addButton.disabled = true;
+            addButton.setAttribute('data-bs-toggle', 'tooltip');
+            addButton.setAttribute('title', 'You cannot add more content because you can only add 9 terms condition items');
+            addButton.innerHTML = `
+                <span class="svg-icon svg-icon-2">
+                    <i class="fa fa-plus fa-lg"></i>
+                </span>
+                Add new content
+            `;
+            toolbar.appendChild(addButton);
+        }
+    }
 
     // Public methods
     return {
         init: function () {
             initDatatable();
             handleSearchDatatable(datatable);
+            handleAddButtonClick();
+            updateAddButtonState();
         }
     }
 }();

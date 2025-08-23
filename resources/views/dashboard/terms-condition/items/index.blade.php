@@ -1,5 +1,4 @@
 @extends('partials.dashboard.master')
-
 @section('content')
     <!-- begin :: Subheader -->
     <div class="toolbar">
@@ -11,7 +10,7 @@
                 class="page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0">
 
                 <!-- begin :: Title -->
-                <h1 class="d-flex align-items-center text-dark fw-bolder fs-3 my-1">{{ __('Solution Middle Section') }}</h1>
+                <h1 class="d-flex align-items-center text-dark fw-bolder fs-3 my-1">{{ __('Terms & Conditions Items') }}</h1>
                 <!-- end   :: Title -->
 
                 <!-- begin :: Separator -->
@@ -22,7 +21,7 @@
                 <ul class="breadcrumb breadcrumb-separatorless fw-bold fs-7 my-1">
                     <!-- begin :: Item -->
                     <li class="breadcrumb-item text-muted">
-                        {{ __('Solution middle section list') }}
+                        {{ __('Terms & Conditions items list') }}
                     </li>
                     <!-- end   :: Item -->
                 </ul>
@@ -69,6 +68,7 @@
                     <input type="text" class="form-control form-control-solid w-250px ps-15 border-gray-300 border-1"
                         id="general-search-inp" placeholder="{{ __('Search ...') }}">
 
+
                 </div>
                 <!-- end   :: General Search -->
 
@@ -76,20 +76,35 @@
                 <div class="d-flex justify-content-end" data-kt-docs-table-toolbar="base">
 
                     <!-- begin :: Add Button -->
-                    <a href="{{ route('dashboard.solution-middle-sections.create') }}" class="btn btn-primary" data-bs-toggle="tooltip"
-                        title="">
+                    @if($itemsCount >= 9)
+                        <button class="btn btn-secondary" disabled data-bs-toggle="tooltip"
+                            title="You cannot add more content because you can only add 9 terms condition items">
 
-                        <span class="svg-icon svg-icon-2">
-                            <i class="fa fa-plus fa-lg"></i>
-                        </span>
+                            <span class="svg-icon svg-icon-2">
+                                <i class="fa fa-plus fa-lg"></i>
+                            </span>
 
-                        {{ __('Add new content') }}
+                            {{ __('Add new content') }}
 
-                    </a>
+                        </button>
+                    @else
+                        <a href="{{ route('dashboard.terms-condition-items.create') }}" class="btn btn-primary" data-bs-toggle="tooltip"
+                            title="">
+
+                            <span class="svg-icon svg-icon-2">
+                                <i class="fa fa-plus fa-lg"></i>
+                            </span>
+
+                            {{ __('Add new content') }}
+
+                        </a>
+                    @endif
                     <!-- end   :: Add Button -->
 
                 </div>
                 <!-- end   :: Toolbar -->
+
+
 
             </div>
             <!-- end   :: Filter -->
@@ -100,8 +115,8 @@
                 <thead>
                     <tr class="text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
                         <th>#</th>
-                        <th>{{ __('Main Title') }}</th>
-                        <th>{{ __('Solution') }}</th>
+                        <th>{{ __('title') }}</th>
+                        <th>{{ __('description') }}</th>
                         <th>{{ __('is active') }}</th>
                         <th>{{ __('created date') }}</th>
                         <th class="min-w-100px">{{ __('actions') }}</th>
@@ -114,6 +129,7 @@
             </table>
             <!-- end   :: Datatable -->
 
+
         </div>
         <!-- end   :: Card Body -->
     </div>
@@ -121,5 +137,5 @@
 @endsection
 @push('scripts')
     <script src="{{ asset('js/dashboard/datatables/datatables.bundle.js') }}"></script>
-    <script src="{{ asset('js/dashboard/datatables/solution_middle_sections.js') }}"></script>
+    <script src="{{ asset('js/dashboard/datatables/terms_condition_items.js') }}"></script>
 @endpush

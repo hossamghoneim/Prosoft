@@ -48,6 +48,8 @@ class PermissionService
             'solution-main-section-items',
             'solution-main-section-item-contents',
             'solution-middle-sections',
+            'terms-condition-hero-sections',
+            'terms-condition-items',
     ];
     static public function getSuperAdminPermissions(): array
     {

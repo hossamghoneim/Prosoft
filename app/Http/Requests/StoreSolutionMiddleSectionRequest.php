@@ -23,7 +23,16 @@ class StoreSolutionMiddleSectionRequest extends FormRequest
     {
         return [
             'solution_id' => 'required|exists:solutions,id',
-            'title' => 'required|string|max:255',
+            'main_title' => 'required|string|max:255',
+            'first_card_icon' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'first_card_title' => 'nullable|string|max:255',
+            'first_card_description' => 'nullable|string|max:500',
+            'second_card_icon' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'second_card_title' => 'nullable|string|max:255',
+            'second_card_description' => 'nullable|string|max:500',
+            'third_card_icon' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'third_card_title' => 'nullable|string|max:255',
+            'third_card_description' => 'nullable|string|max:500',
         ];
     }
 
@@ -37,9 +46,9 @@ class StoreSolutionMiddleSectionRequest extends FormRequest
         return [
             'solution_id.required' => 'The solution field is required.',
             'solution_id.exists' => 'The selected solution is invalid.',
-            'title.required' => 'The title field is required.',
-            'title.string' => 'The title must be a string.',
-            'title.max' => 'The title may not be greater than 255 characters.',
+            'main_title.required' => 'The main title field is required.',
+            'main_title.string' => 'The main title must be a string.',
+            'main_title.max' => 'The main title may not be greater than 255 characters.',
         ];
     }
 }

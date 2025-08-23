@@ -36,6 +36,8 @@ use App\Interfaces\HomeHeroSectionRepositoryInterface;
 use App\Interfaces\HomePrimarySectionRepositoryInterface;
 use App\Interfaces\HomeSecondarySectionRepositoryInterface;
 use App\Interfaces\SettingRepositoryInterface;
+use App\Interfaces\TermsConditionHeroSectionRepositoryInterface;
+use App\Interfaces\TermsConditionItemRepositoryInterface;
 use App\Repositories\AboutUsFeatureItemRepository;
 use App\Repositories\AboutUsMiddleSectionRepository;
 use App\Repositories\AboutUsMiddleSectionItemRepository;
@@ -70,6 +72,8 @@ use App\Repositories\HomeHeroSectionRepository;
 use App\Repositories\HomePrimarySectionRepository;
 use App\Repositories\HomeSecondarySectionRepository;
 use App\Repositories\SettingRepository;
+use App\Repositories\TermsConditionHeroSectionRepository;
+use App\Repositories\TermsConditionItemRepository;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
@@ -127,6 +131,8 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(SolutionMainSectionItemRepositoryInterface::class, SolutionMainSectionItemRepository::class);
         $this->app->bind(SolutionMainSectionItemContentRepositoryInterface::class, SolutionMainSectionItemContentRepository::class);
         $this->app->bind(SolutionMiddleSectionRepositoryInterface::class, SolutionMiddleSectionRepository::class);
+        $this->app->bind(TermsConditionHeroSectionRepositoryInterface::class, TermsConditionHeroSectionRepository::class);
+        $this->app->bind(TermsConditionItemRepositoryInterface::class, TermsConditionItemRepository::class);
     }
 
 }

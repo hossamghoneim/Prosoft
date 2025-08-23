@@ -483,6 +483,40 @@
                     </div>
                 @endcan
 
+                @can('list_view@terms-condition-hero-sections')
+                    <div class="menu-item mb-3">
+                        <div class="menu-content pt-8 pb-0">
+                            <span class="menu-section text-muted text-uppercase fs-8 ls-1">{{ __('Terms & Conditions') }}</span>
+                        </div>
+                    </div>
+                @endcan
+
+                @can('list_view@terms-condition-hero-sections')
+                    <div class="menu-item">
+                        <a class="menu-link {{ isTabActive('terms-condition-hero-sections') }}"
+                            href="{{ route('dashboard.terms-condition-hero-sections.index') }}" data-bs-toggle="tooltip"
+                            data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
+                            <span class="menu-icon">
+                                <i class="fa fa-file-contract"></i>
+                            </span>
+                            <span class="menu-title"> {{ __('Hero Section') }}</span>
+                        </a>
+                    </div>
+                @endcan
+
+                @can('list_view@terms-condition-items')
+                    <div class="menu-item">
+                        <a class="menu-link {{ isTabActive('terms-condition-items') }}"
+                            href="{{ route('dashboard.terms-condition-items.index') }}" data-bs-toggle="tooltip"
+                            data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
+                            <span class="menu-icon">
+                                <i class="fa fa-list"></i>
+                            </span>
+                            <span class="menu-title"> {{ __('Items') }}</span>
+                        </a>
+                    </div>
+                @endcan
+
                 @canany(['list_view@roles', 'list_view@admins', 'list_view@settings'])
                     <div class="menu-item mb-3">
                         <div class="menu-content pt-8 pb-0">

@@ -6,14 +6,19 @@ use Illuminate\Database\Eloquent\Model;
 
 class TermsConditionHeroSection extends Model
 {
-    protected $fillable = ['description', 'video_url', 'is_active', 'effective_date'];
+    protected $fillable = [
+        'description',
+        'video_url',
+        'is_active',
+        'effective_date',
+    ];
+
     protected $casts = [
         'effective_date' => 'date',
     ];
 
-
-    public function getVideoUrlAttribute($value)
+    public function getCreatedAtAttribute($value)
     {
-        return $value ? asset($value) : null;
+        return \Carbon\Carbon::parse($value)->format('d/m/Y H:i');
     }
 }

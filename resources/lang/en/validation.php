@@ -161,6 +161,11 @@ return [
         'translations.*.name' => 'name',
         'car_models.*.year' => 'year',
         'car_models.*.car_model_id' => 'car model',
+        'description' => 'description',
+        'video_url' => 'video',
+        'effective_date' => 'effective date',
+        'title' => 'title',
+        'order' => 'order',
     ],
 
 ];

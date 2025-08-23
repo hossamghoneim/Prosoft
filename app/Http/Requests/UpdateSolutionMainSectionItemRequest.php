@@ -24,7 +24,7 @@ class UpdateSolutionMainSectionItemRequest extends FormRequest
     {
         return [
             'solution_main_section_id' => 'required|exists:solution_main_sections,id',
-            'title' => 'required|string|max:20',
+            'title' => 'required|string|max:50',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp,svg|max:2048',
             'order' => 'nullable|integer|min:1',
         ];
@@ -42,7 +42,7 @@ class UpdateSolutionMainSectionItemRequest extends FormRequest
             'solution_main_section_id.exists' => 'The selected solution main section is invalid.',
             'title.required' => 'The title field is required.',
             'title.string' => 'The title must be a string.',
-            'title.max' => 'The title may not be greater than 20 characters.',
+            'title.max' => 'The title may not be greater than 50 characters.',
             'image.image' => 'The image must be an image.',
             'image.mimes' => 'The image must be a file of type: jpeg, png, jpg, gif, webp, svg.',
             'image.max' => 'The image may not be greater than 2MB.',
