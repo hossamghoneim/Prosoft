@@ -39,9 +39,9 @@ class SolutionController extends Controller
                     ->orderBy('order')
                     ->with([
                         'solutionMainSectionItemContent' => function ($q) {
-                            $q->limit(1);
+                            $q->orderBy('id', 'asc');
                         }
-                    ])->limit(3);
+                    ])->get();
             }
         ])->where('solution_id', $request->solution_id)->where('is_active', true)->first();
 
