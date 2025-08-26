@@ -21,6 +21,15 @@ class SolutionMainSectionItemContent extends Model
         'button_text',
     ];
 
+    public function getBackgroundImageAttribute($value)
+    {
+        return getFilePath($value);
+    }
+    public function getLogoAttribute($value)
+    {
+        return getFilePath($value);
+    }
+
     public function solutionMainSectionItem()
     {
         return $this->belongsTo(SolutionMainSectionItem::class);

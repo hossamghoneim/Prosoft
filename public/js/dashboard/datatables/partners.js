@@ -45,9 +45,9 @@ let KTDatatable = function () {
                         if (!data) return '';
 
                         return `
-                            <a class="d-block overlay" style="height:47px;" data-fslightbox="lightbox-basic" href="${getFilePath(data)}">
+                            <a class="d-block overlay" style="height:47px;" data-fslightbox="lightbox-basic" href="${data}">
                                 <div class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded"
-                                    style="height:55px;width:55px;border-radius:4px;margin:auto;background-image:url('${getFilePath(data)}');background-size:contain;">
+                                    style="height:55px;width:55px;border-radius:4px;margin:auto;background-image:url('${data}');background-size:contain;">
                                 </div>
                             </a>`;
                     }
@@ -58,9 +58,9 @@ let KTDatatable = function () {
                         if (!data) return '';
 
                         return `
-                            <a class="d-block overlay" style="height:47px;" data-fslightbox="lightbox-basic" href="${getFilePath(data)}">
+                            <a class="d-block overlay" style="height:47px;" data-fslightbox="lightbox-basic" href="${data}">
                                 <div class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded"
-                                    style="height:55px;width:55px;border-radius:4px;margin:auto;background-image:url('${getFilePath(data)}');background-size:contain;">
+                                    style="height:55px;width:55px;border-radius:4px;margin:auto;background-image:url('${data}');background-size:contain;">
                                 </div>
                             </a>`;
                     }

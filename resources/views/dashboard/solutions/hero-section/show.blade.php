@@ -160,7 +160,7 @@
                         <div class="form-control form-control-solid">
                             @if($solutionHeroSection->video_url)
                                 <video controls style="max-width: 100%; max-height: 200px;">
-                                    <source src="{{ getFilePath($solutionHeroSection->video_url) }}" type="video/mp4">
+                                    <source src="{{ $solutionHeroSection->video_url }}" type="video/mp4">
                                     {{ __('Your browser does not support the video tag.') }}
                                 </video>
                             @else

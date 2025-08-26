@@ -15,6 +15,11 @@ class AboutUsMiddleSectionItem extends Model
         'is_active',
     ];
 
+    public function getIconAttribute($value)
+    {
+        return getFilePath($value);
+    }
+
     public function aboutUsMiddleSection()
     {
         return $this->belongsTo(AboutUsMiddleSection::class, 'about_us_middle_section_id');

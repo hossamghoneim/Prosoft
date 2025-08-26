@@ -15,13 +15,13 @@ class SolutionMiddleSectionItem extends Model
         'is_active'
     ];
 
+    public function getIconAttribute($value)
+    {
+        return getFilePath($value);
+    }
+
     public function solutionMiddleSection()
     {
         return $this->belongsTo(SolutionMiddleSection::class);
-    }
-
-    public function getIconAttribute($value)
-    {
-        return $value ? asset($value) : null;
     }
 }

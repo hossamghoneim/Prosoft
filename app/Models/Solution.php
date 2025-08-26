@@ -13,6 +13,11 @@ class Solution extends Model
         'is_active'
     ];
 
+    public function getImageAttribute($value)
+    {
+        return getFilePath($value);
+    }
+
     public function getCreatedAtAttribute($value)
     {
         return \Carbon\Carbon::parse($value)->format('d/m/Y H:i');

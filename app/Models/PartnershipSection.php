@@ -8,6 +8,11 @@ class PartnershipSection extends Model
 {
     protected $fillable = ['title', 'description', 'image', 'is_active'];
 
+    public function getImageAttribute($value)
+    {
+        return getFilePath($value);
+    }
+
     public function partners()
     {
         return $this->hasMany(Partner::class);

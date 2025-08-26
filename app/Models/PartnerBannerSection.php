@@ -13,6 +13,11 @@ class PartnerBannerSection extends Model
         'is_active',
     ];
 
+    public function getImageAttribute($value)
+    {
+        return getFilePath($value);
+    }
+
     public function partnerBannerSectionItems()
     {
         return $this->hasMany(PartnerBannerSectionItem::class, 'partner_banner_section_id');

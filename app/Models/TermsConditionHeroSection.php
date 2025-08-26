@@ -17,6 +17,11 @@ class TermsConditionHeroSection extends Model
         'effective_date' => 'date',
     ];
 
+    public function getVideoUrlAttribute($value)
+    {
+        return getFilePath($value);
+    }
+
     public function getCreatedAtAttribute($value)
     {
         return \Carbon\Carbon::parse($value)->format('d/m/Y H:i');

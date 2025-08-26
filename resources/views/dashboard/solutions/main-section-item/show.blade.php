@@ -60,7 +60,7 @@
                         <div class="d-flex flex-column align-items-center">
                             <!-- begin :: Image -->
                             @if($solutionMainSectionItem->image)
-                                <img src="{{ getFilePath($solutionMainSectionItem->image) }}" alt="Solution Main Section Item Image"
+                                <img src="{{ $solutionMainSectionItem->image }}" alt="Solution Main Section Item Image"
                                      class="img-fluid rounded" style="max-width: 300px; max-height: 300px;">
                             @else
                                 <div class="bg-light rounded d-flex align-items-center justify-content-center"

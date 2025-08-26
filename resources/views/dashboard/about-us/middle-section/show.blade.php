@@ -57,7 +57,7 @@
                         <div class="d-flex flex-column align-items-center">
                             <!-- begin :: Background Image -->
                             @if($aboutUsMiddleSection->background_image)
-                                <img src="{{ getFilePath($aboutUsMiddleSection->background_image) }}" alt="About Us Middle Section Background Image"
+                                <img src="{{ $aboutUsMiddleSection->background_image }}" alt="About Us Middle Section Background Image"
                                      class="img-fluid rounded" style="max-width: 300px; max-height: 300px;">
                             @else
                                 <div class="bg-light rounded d-flex align-items-center justify-content-center"

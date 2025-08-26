@@ -8,6 +8,11 @@ class AboutUsMiddleSection extends Model
 {
     protected $fillable = ['title', 'description', 'background_image', 'is_active'];
 
+    public function getBackgroundImageAttribute($value)
+    {
+        return getFilePath($value);
+    }
+
     public function aboutUsMiddleSectionItems()
     {
         return $this->hasMany(AboutUsMiddleSectionItem::class, 'about_us_middle_section_id');

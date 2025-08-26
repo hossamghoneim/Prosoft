@@ -15,6 +15,11 @@ class ServiceSectionItem extends Model
         'is_active',
     ];
 
+    public function getIconAttribute($value)
+    {
+        return getFilePath($value);
+    }
+
     public function serviceSection()
     {
         return $this->belongsTo(ServiceSection::class);

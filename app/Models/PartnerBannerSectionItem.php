@@ -14,6 +14,11 @@ class PartnerBannerSectionItem extends Model
         'is_active',
     ];
 
+    public function getIconAttribute($value)
+    {
+        return getFilePath($value);
+    }
+
     public function partnerBannerSection()
     {
         return $this->belongsTo(PartnerBannerSection::class, 'partner_banner_section_id');

@@ -14,6 +14,11 @@ class SolutionMainSectionItem extends Model
         'is_active',
     ];
 
+    public function getImageAttribute($value)
+    {
+        return getFilePath($value);
+    }
+
     public function solutionMainSection()
     {
         return $this->belongsTo(SolutionMainSection::class);

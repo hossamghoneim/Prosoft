@@ -8,6 +8,11 @@ class ContactUsContent extends Model
 {
     protected $fillable = ['title', 'description', 'video_url', 'contact_email', 'contact_phone'];
 
+    public function getVideoUrlAttribute($value)
+    {
+        return getFilePath($value);
+    }
+
     public function contactUsSections()
     {
         return $this->hasMany(ContactUsSection::class);

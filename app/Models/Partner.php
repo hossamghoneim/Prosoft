@@ -18,6 +18,16 @@ class Partner extends Model
         'is_active'
     ];
 
+    public function getInnerLogoAttribute($value)
+    {
+        return getFilePath($value);
+    }
+
+    public function getOuterLogoAttribute($value)
+    {
+        return getFilePath($value);
+    }
+
     public function partnershipSection()
     {
         return $this->belongsTo(PartnershipSection::class, 'partnership_section_id');

@@ -14,6 +14,11 @@ class AboutUsFeatureItem extends Model
         'is_active',
     ];
 
+    public function getIconAttribute($value)
+    {
+        return getFilePath($value);
+    }
+
     public function aboutUsFeature()
     {
         return $this->belongsTo(AboutUsFeature::class, 'about_us_feature_id');

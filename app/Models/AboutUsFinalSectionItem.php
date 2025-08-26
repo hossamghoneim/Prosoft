@@ -15,6 +15,11 @@ class AboutUsFinalSectionItem extends Model
         'is_active',
     ];
 
+    public function getIconAttribute($value)
+    {
+        return getFilePath($value);
+    }
+
     public function aboutUsFinalSection()
     {
         return $this->belongsTo(AboutUsFinalSection::class);

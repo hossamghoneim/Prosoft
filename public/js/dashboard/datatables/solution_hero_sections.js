@@ -50,10 +50,10 @@ let KTDatatable = function () {
                                 <a class="d-block overlay" style="height:47px;"
                                     data-fslightbox="lightbox-basic"
                                     data-type="video"
-                                    href="${getFilePath(data)}">
+                                    href="${data}">
                                 <div class="overlay-wrapper card-rounded d-flex align-items-center justify-content-center"
                                         style="height:55px;width:55px;border-radius:4px;margin:auto;overflow:hidden;background:#000;">
-                                    <video src="${getFilePath(data)}"
+                                    <video src="${data}"
                                             muted
                                             loop
                                             playsinline

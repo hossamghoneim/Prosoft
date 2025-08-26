@@ -21,6 +21,21 @@ class SolutionMiddleSection extends Model
         'is_active',
     ];
 
+    public function getFirstCardIconAttribute($value)
+    {
+        return getFilePath($value);
+    }
+
+    public function getSecondCardIconAttribute($value)
+    {
+        return getFilePath($value);
+    }
+
+    public function getThirdCardIconAttribute($value)
+    {
+        return getFilePath($value);
+    }
+
     public function solution()
     {
         return $this->belongsTo(Solution::class);

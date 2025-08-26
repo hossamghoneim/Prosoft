@@ -95,8 +95,8 @@
                             <div style="width: 100%; height: 100%;">
                                 @if ($homeSecondarySection->background_image)
                                     <a class="d-block overlay" data-fslightbox="lightbox-basic"
-                                        href="{{ getFilePath($homeSecondarySection->background_image) }}">
-                                        <img src="{{ getFilePath($homeSecondarySection->background_image) }}"
+                                        href="{{ $homeSecondarySection->background_image }}">
+                                        <img src="{{ $homeSecondarySection->background_image }}"
                                             alt="{{ $homeSecondarySection->main_title }}"
                                             style="width: 100%; height: 100%; object-fit: cover;">
                                     </a>
@@ -127,8 +127,8 @@
                             <div style="width: 100%; height: 100%;">
                                 @if ($homeSecondarySection->first_card_logo)
                                     <a class="d-block overlay" data-fslightbox="lightbox-basic"
-                                        href="{{ getFilePath($homeSecondarySection->first_card_logo) }}">
-                                        <img src="{{ getFilePath($homeSecondarySection->first_card_logo) }}"
+                                        href="{{ $homeSecondarySection->first_card_logo }}">
+                                        <img src="{{ $homeSecondarySection->first_card_logo }}"
                                             alt="{{ $homeSecondarySection->first_card_title }}"
                                             style="width: 100%; height: 100%; object-fit: cover;">
                                     </a>
@@ -179,8 +179,8 @@
                             <div style="width: 100%; height: 100%;">
                                 @if ($homeSecondarySection->second_card_logo)
                                     <a class="d-block overlay" data-fslightbox="lightbox-basic"
-                                        href="{{ getFilePath($homeSecondarySection->second_card_logo) }}">
-                                        <img src="{{ getFilePath($homeSecondarySection->second_card_logo) }}"
+                                        href="{{ $homeSecondarySection->second_card_logo }}">
+                                        <img src="{{ $homeSecondarySection->second_card_logo }}"
                                             alt="{{ $homeSecondarySection->second_card_title }}"
                                             style="width: 100%; height: 100%; object-fit: cover;">
                                     </a>
@@ -231,8 +231,8 @@
                             <div style="width: 100%; height: 100%;">
                                 @if ($homeSecondarySection->third_card_logo)
                                     <a class="d-block overlay" data-fslightbox="lightbox-basic"
-                                        href="{{ getFilePath($homeSecondarySection->third_card_logo) }}">
-                                        <img src="{{ getFilePath($homeSecondarySection->third_card_logo) }}"
+                                        href="{{ $homeSecondarySection->third_card_logo }}">
+                                        <img src="{{ $homeSecondarySection->third_card_logo }}"
                                             alt="{{ $homeSecondarySection->third_card_title }}"
                                             style="width: 100%; height: 100%; object-fit: cover;">
                                     </a>
