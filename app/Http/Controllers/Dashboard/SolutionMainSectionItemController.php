@@ -52,34 +52,15 @@ class SolutionMainSectionItemController extends Controller
         // Get all active solution main sections
         $allActiveSections = SolutionMainSection::where('is_active', true)->pluck('id')->toArray();
 
-        // Get sections that have reached the limit
-        $sectionsAtLimit = array_filter($itemsPerSection, function($count) {
-            return $count >= 3;
-        });
-
-        return view('dashboard.solutions.main-section-item.index', compact('itemsPerSection', 'allActiveSections', 'sectionsAtLimit'));
+        return view('dashboard.solutions.main-section-item.index', compact('itemsPerSection', 'allActiveSections'));
     }
 
     public function create(): View|RedirectResponse
     {
         $this->authorize(PermissionActions::CREATE);
 
-        // Get solution main sections that have less than 3 items
-        $itemsPerSection = SolutionMainSectionItem::selectRaw('solution_main_section_id, COUNT(*) as count')
-            ->groupBy('solution_main_section_id')
-            ->pluck('count', 'solution_main_section_id')
-            ->toArray();
-
-        $availableSections = SolutionMainSection::where('is_active', true)
-            ->whereNotIn('id', array_keys(array_filter($itemsPerSection, function($count) {
-                return $count >= 3;
-            })))
-            ->get();
-
-        if ($availableSections->isEmpty()) {
-            return redirect()->route('dashboard.solution-main-section-items.index')
-                ->with('error', 'You cannot add more items because all solution main sections have reached the limit of 3 items.');
-        }
+        // Get all active solution main sections
+        $availableSections = SolutionMainSection::where('is_active', true)->get();
 
         return view('dashboard.solutions.main-section-item.create', compact('availableSections'));
     }
@@ -133,36 +114,13 @@ class SolutionMainSectionItemController extends Controller
 
     public function checkExists(): \Illuminate\Http\JsonResponse
     {
-        // Get counts of items per solution main section
-        $itemsPerSection = SolutionMainSectionItem::selectRaw('solution_main_section_id, COUNT(*) as count')
-            ->groupBy('solution_main_section_id')
-            ->pluck('count', 'solution_main_section_id')
-            ->toArray();
-
         // Get all active solution main sections
         $allActiveSections = SolutionMainSection::where('is_active', true)->pluck('id')->toArray();
 
-        // Check if all sections have reached the limit
-        $sectionsAtLimit = array_filter($itemsPerSection, function($count) {
-            return $count >= 3;
-        });
-
-        $exists = !empty(array_diff($allActiveSections, array_keys($sectionsAtLimit)));
-
-        if ($exists) {
-            return response()->json([
-                'exists' => false,
-                'message' => 'You can add new items.',
-                'sectionsAtLimit' => $sectionsAtLimit,
-                'availableSections' => array_diff($allActiveSections, array_keys($sectionsAtLimit))
-            ], 200);
-        }
-
         return response()->json([
-            'exists' => true,
-            'message' => 'You cannot add more items because all solution main sections have reached the limit of 3 items.',
-            'sectionsAtLimit' => $sectionsAtLimit,
-            'availableSections' => []
+            'exists' => false,
+            'message' => 'You can add new items.',
+            'availableSections' => $allActiveSections
         ], 200);
     }
 }

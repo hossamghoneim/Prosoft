@@ -28,12 +28,6 @@ class SolutionMainSectionItemService
 
     public function store(array $attributes)
     {
-        // Check if the section has reached the limit (max 3 items)
-        $itemCount = $this->solutionMainSectionItemRepository->countBySection($attributes['solution_main_section_id']);
-        if ($itemCount >= 3) {
-            throw new \Exception('Maximum of 3 items allowed per section.');
-        }
-
         // Handle image upload
         if (isset($attributes['image'])) {
             $attributes['image'] = upload_file($attributes['image'], 'solution-main-section-items');

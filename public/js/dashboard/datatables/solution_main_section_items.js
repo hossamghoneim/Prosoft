@@ -126,7 +126,6 @@ let KTDatatable = function () {
             handleDeleteRows();
             KTMenu.createInstances();
             $('body').append(`<script src='${lightboxPath}' ></script>`)
-            updateAddButtonState();
         });
     }
 
@@ -179,114 +178,13 @@ let KTDatatable = function () {
         })
     }
 
-    // Handle add button click with validation
-    let handleAddButtonClick = function() {
-        $(document).on('click', 'a[href*="solution-main-section-items/create"]', function(e) {
-            e.preventDefault();
 
-            $.ajax({
-                url: '/solution-main-section-items/check-exists',
-                method: 'GET',
-                success: function(response) {
-                    if (response.exists) {
-                        errorAlert(response.message);
-                    } else {
-                        window.location.href = '/solution-main-section-items/create';
-                    }
-                },
-                error: function() {
-                    errorAlert('An error occurred while checking availability.');
-                }
-            });
-        });
-    }
-
-    // Update add button state
-    let updateAddButtonState = function() {
-        $.ajax({
-            url: '/solution-main-section-items/check-exists',
-            method: 'GET',
-            success: function(response) {
-                if (response.exists) {
-                    disableAddButton();
-                } else {
-                    enableAddButton();
-                }
-            },
-            error: function() {
-                console.error('Error checking solution main section item availability');
-            }
-        });
-    }
-
-    // Enable add button
-    let enableAddButton = function() {
-        const toolbar = document.querySelector('[data-kt-docs-table-toolbar="base"]');
-        if (!toolbar) return;
-
-        // Remove disabled button if exists
-        const disabledButton = toolbar.querySelector('button[disabled]');
-        if (disabledButton) {
-            disabledButton.remove();
-        }
-
-        // Add enabled link if not exists
-        const enabledLink = toolbar.querySelector('a[href*="solution-main-section-items/create"]');
-        if (!enabledLink) {
-            const addLink = document.createElement('a');
-            addLink.href = '/solution-main-section-items/create';
-            addLink.className = 'btn btn-primary';
-            addLink.setAttribute('data-bs-toggle', 'tooltip');
-            addLink.setAttribute('title', '');
-            addLink.innerHTML = `
-                <span class="svg-icon svg-icon-2">
-                    <i class="fa fa-plus fa-lg"></i>
-                </span>
-                Add new item
-            `;
-            toolbar.appendChild(addLink);
-
-            // Re-attach click event
-            handleAddButtonClick();
-        }
-    }
-
-    // Disable add button
-    let disableAddButton = function() {
-        const toolbar = document.querySelector('[data-kt-docs-table-toolbar="base"]');
-        if (!toolbar) return;
-
-        // Remove enabled link if exists
-        const enabledLink = toolbar.querySelector('a[href*="solution-main-section-items/create"]');
-        if (enabledLink) {
-            enabledLink.remove();
-        }
-
-        // Add disabled button if not exists
-        const disabledButton = toolbar.querySelector('button[disabled]');
-        if (!disabledButton) {
-            const addButton = document.createElement('button');
-            addButton.className = 'btn btn-secondary';
-            addButton.disabled = true;
-            addButton.setAttribute('data-bs-toggle', 'tooltip');
-            addButton.setAttribute('title', 'You cannot add more items because all solution main sections have reached the limit of 3 items');
-            addButton.innerHTML = `
-                <span class="svg-icon svg-icon-2">
-                    <i class="fa fa-plus fa-lg"></i>
-                </span>
-                Add new item
-            `;
-            toolbar.appendChild(addButton);
-        }
-    }
 
     // Public methods
     return {
         init: function () {
             initDatatable();
             handleSearchDatatable(datatable);
-            handleAddButtonClick();
-            updateAddButtonState();
         }
     }
 }();
