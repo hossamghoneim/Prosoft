@@ -30,3 +30,5 @@ class UpdateTermsConditionItemRequest extends FormRequest
         ];
     }
 }
+
+

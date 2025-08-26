@@ -24,3 +24,4 @@ class TermsConditionItemResource extends JsonResource
         ];
     }
 }
+

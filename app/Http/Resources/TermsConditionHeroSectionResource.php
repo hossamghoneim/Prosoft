@@ -24,3 +24,4 @@ class TermsConditionHeroSectionResource extends JsonResource
         ];
     }
 }
+

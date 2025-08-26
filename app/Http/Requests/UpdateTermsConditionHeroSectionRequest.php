@@ -30,3 +30,4 @@ class UpdateTermsConditionHeroSectionRequest extends FormRequest
         ];
     }
 }
+

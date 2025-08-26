@@ -49,3 +49,4 @@ class TermsConditionHeroSectionService
         return $this->termsConditionHeroSectionRepository->destroy($id);
     }
 }
+

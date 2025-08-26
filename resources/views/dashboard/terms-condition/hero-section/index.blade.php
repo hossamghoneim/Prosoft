@@ -139,3 +139,4 @@
     <script src="{{ asset('js/dashboard/datatables/datatables.bundle.js') }}"></script>
     <script src="{{ asset('js/dashboard/datatables/terms_condition_hero_sections.js') }}"></script>
 @endpush
+

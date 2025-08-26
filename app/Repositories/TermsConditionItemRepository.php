@@ -51,3 +51,4 @@ class TermsConditionItemRepository implements TermsConditionItemRepositoryInterf
         return TermsConditionItem::destroy($id);
     }
 }
+

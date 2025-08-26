@@ -12,3 +12,4 @@ interface TermsConditionItemRepositoryInterface
     public function update($id, array $attributes);
     public function destroy($id): int;
 }
+

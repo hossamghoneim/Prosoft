@@ -319,3 +319,4 @@ let KTDatatable = function () {
 KTUtil.onDOMContentLoaded(function () {
     KTDatatable.init();
 });
+

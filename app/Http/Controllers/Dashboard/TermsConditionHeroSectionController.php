@@ -123,3 +123,4 @@ class TermsConditionHeroSectionController extends Controller
         ], 200);
     }
 }
+

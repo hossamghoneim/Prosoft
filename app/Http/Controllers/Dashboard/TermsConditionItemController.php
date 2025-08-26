@@ -124,3 +124,4 @@ class TermsConditionItemController extends Controller
         ], 200);
     }
 }
+

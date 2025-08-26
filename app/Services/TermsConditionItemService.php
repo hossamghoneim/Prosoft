@@ -46,3 +46,4 @@ class TermsConditionItemService
         return $this->termsConditionItemRepository->destroy($id);
     }
 }
+

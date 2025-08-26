@@ -30,3 +30,4 @@ class StoreTermsConditionHeroSectionRequest extends FormRequest
         ];
     }
 }
+
