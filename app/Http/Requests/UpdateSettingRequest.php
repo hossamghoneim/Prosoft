@@ -38,6 +38,7 @@ class UpdateSettingRequest extends FormRequest
             'footer_linkedin_url' => [ 'nullable', 'url' , 'string' , 'max:255'  ],
             'footer_banner_image' => [ 'nullable', 'image' , 'mimes:jpeg,png,jpg,webp,svg' , 'max:5120'  ],
             'footer_logo' => [ 'nullable', 'image' , 'mimes:svg,png,jpg,jpeg' , 'max:2048'  ],
+            'header_secondary_logo' => [ 'nullable', 'image' , 'mimes:svg,png,jpg,jpeg' , 'max:2048'  ],
             ];
     }
 }

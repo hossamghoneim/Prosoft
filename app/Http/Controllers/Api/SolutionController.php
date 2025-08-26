@@ -38,7 +38,7 @@ class SolutionController extends Controller
                 $q->where('is_active', true)
                     ->orderBy('order')
                     ->with([
-                        'solutionMainSectionItemContents' => function ($q) {
+                        'solutionMainSectionItemContent' => function ($q) {
                             $q->limit(1);
                         }
                     ])->limit(3);

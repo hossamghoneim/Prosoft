@@ -34,7 +34,11 @@ class SettingController extends Controller
         $footerSetting = Setting::where('key', 'footer')->first();
         $footerSettings = $footerSetting ? json_decode($footerSetting->value, true) : [];
 
-        return view('dashboard.settings', compact('settings', 'footerSettings'));
+        // Get header settings
+        $headerSetting = Setting::where('key', 'header')->first();
+        $headerSettings = $headerSetting ? json_decode($headerSetting->value, true) : [];
+
+        return view('dashboard.settings', compact('settings', 'footerSettings', 'headerSettings'));
     }
     public function update(UpdateSettingRequest $request): Response
     {

@@ -19,12 +19,12 @@ class GeneralController extends Controller
         $headerData = $headerSetting ? json_decode($headerSetting->value, true) : [];
 
         if (isset($data['logo'])) {
-            $data['banner_image'] = asset($data['banner_image']);
-            $data['logo'] = asset($data['logo']);
+            $data['banner_image'] = getFilePath($data['banner_image']);
+            $data['logo'] = getFilePath($data['logo']);
         }
 
         if (isset($headerData['secondaryLogo'])) {
-            $headerData['secondaryLogo'] = asset($headerData['secondaryLogo']);
+            $headerData['secondaryLogo'] = getFilePath($headerData['secondaryLogo']);
         }
 
         $solutions = Solution::whereIsActive(true)->select('id', 'title', 'slug')->get();

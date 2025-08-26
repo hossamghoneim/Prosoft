@@ -34,7 +34,14 @@
 
                     <!--begin::Nav item-->
                     <li class="nav-item">
-                        <a class="nav-link text-active-primary me-6 setting-label active" id="footer-settings-label"
+                        <a class="nav-link text-active-primary me-6 setting-label active" id="header-settings-label"
+                           href="javascript:" onclick="changeSettingView('header')">{{ __("Header") }}</a>
+                    </li>
+                    <!--end::Nav item-->
+
+                    <!--begin::Nav item-->
+                    <li class="nav-item">
+                        <a class="nav-link text-active-primary me-6 setting-label" id="footer-settings-label"
                            href="javascript:" onclick="changeSettingView('footer')">{{ __("Footer") }}</a>
                     </li>
                     <!--end::Nav item-->
@@ -53,14 +60,68 @@
         @csrf
         @method('PUT')
 
+        <!-- Begin :: Header Settings Card -->
+        <input type="hidden" name="setting_type" value="header" id="setting-type-inp">
+
+        <!-- Begin :: Header Settings Card -->
+        <div class="card card-flush setting-card" id="header-settings-card">
+            <!--begin::Card header-->
+            <div class="card-header pt-8">
+
+                <div class="card-title">
+                    <h2>{{ __("Header") }}</h2>
+                </div>
+
+                <div class="card-title">
+
+                    <!-- begin :: Submit btn -->
+                    <button type="submit" class="btn btn-primary mx-4" id="submit-btn-header">
+
+                        <span class="indicator-label">{{ __("Save") }}</span>
+
+                        <!-- begin :: Indicator -->
+                        <span class="indicator-progress">{{ __("Please wait ...") }}
+                            <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                        </span>
+                        <!-- end   :: Indicator -->
+
+                    </button>
+                    <!-- end   :: Submit btn -->
+
+                </div>
+
+            </div>
+            <!--end::Card header-->
+
+            <!-- Begin :: Card body -->
+            <div class="card-body">
+
+                <!-- Begin :: Input group -->
+                <div class="fv-row row mb-15">
+
+                    <!-- Begin :: Col -->
+                    <div class="col-md-6">
+
+                        <label class="form-label">{{ __("Secondary Logo") }}</label>
+                        <x-dashboard.upload-image-inp name="header_secondary_logo" :image="$headerSettings['secondaryLogo'] ?? null" placeholder="default.jpg" type="editable"></x-dashboard.upload-image-inp>
+                        <p class="invalid-feedback" id="header_secondary_logo"></p>
+
+                    </div>
+                    <!-- End   :: Col -->
+
+                </div>
+                <!-- End   :: Input group -->
+
+            </div>
+            <!-- End   :: Card body -->
+
+        </div>
+        <!-- End   :: Header Settings Card -->
+
         <!-- Begin :: Footer Settings Card -->
-        <input type="hidden" name="setting_type" value="footer" id="setting-type-inp">
-
-
-
 
         <!-- Begin :: Footer Settings Card -->
-        <div class="card card-flush setting-card" id="footer-settings-card">
+        <div class="card card-flush setting-card" id="footer-settings-card" style="display: none;">
             <!--begin::Card header-->
             <div class="card-header pt-8">
 
@@ -168,7 +229,20 @@
 {{--    <script src="{{ asset('dashboard-assets/plugins/custom/tinymce/tinymce.bundle.js') }}"></script>--}}
     <script>
 
+        function changeSettingView(type) {
+            // Hide all setting cards
+            $('.setting-card').hide();
 
+            // Show the selected card
+            $('#' + type + '-settings-card').show();
+
+            // Update active tab
+            $('.setting-label').removeClass('active');
+            $('#' + type + '-settings-label').addClass('active');
+
+            // Update hidden input
+            $('#setting-type-inp').val(type);
+        }
 
         $(document).ready(() => {
             console.log('Settings page loaded, initializing...');
@@ -178,8 +252,19 @@
                 initTinyMc(true);
             }
 
+            // Show header settings by default
+            changeSettingView('header');
 
+            // Handle form submission to include only relevant fields
+            $('form').on('submit', function() {
+                var currentType = $('#setting-type-inp').val();
 
+                // Hide all setting cards except the current one
+                $('.setting-card').not('#' + currentType + '-settings-card').hide();
+
+                // Remove form fields from hidden cards to avoid conflicts
+                $('.setting-card').not('#' + currentType + '-settings-card').find('input, textarea, select').prop('disabled', true);
+            });
 
         });
 
