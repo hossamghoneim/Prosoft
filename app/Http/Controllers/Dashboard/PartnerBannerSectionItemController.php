@@ -52,39 +52,15 @@ class PartnerBannerSectionItemController extends Controller
         // Get all active partner banner sections
         $allActiveSections = PartnerBannerSection::where('is_active', true)->pluck('id')->toArray();
 
-        // Get sections that have reached the limit
-        $sectionsAtLimit = array_filter($itemsPerSection, function($count) {
-            return $count >= 3;
-        });
-
-        return view('dashboard.partners.banner-section-item.index', compact('itemsPerSection', 'allActiveSections', 'sectionsAtLimit'));
+        return view('dashboard.partners.banner-section-item.index', compact('itemsPerSection', 'allActiveSections'));
     }
 
     public function create(): View|RedirectResponse
     {
         $this->authorize(PermissionActions::CREATE);
 
-        // Get counts of items per partner banner section
-        $itemsPerSection = PartnerBannerSectionItem::selectRaw('partner_banner_section_id, COUNT(*) as count')
-            ->groupBy('partner_banner_section_id')
-            ->pluck('count', 'partner_banner_section_id')
-            ->toArray();
-
         // Get all active partner banner sections
-        $allActiveSections = PartnerBannerSection::where('is_active', true)->pluck('id')->toArray();
-
-        // Filter to only show sections that have less than 3 items
-        $availableSections = PartnerBannerSection::where('is_active', true)
-            ->whereNotIn('id', array_keys(array_filter($itemsPerSection, function($count) {
-                return $count >= 3;
-            })))
-            ->get();
-
-        // If all sections are at the limit, redirect with error
-        if ($availableSections->isEmpty()) {
-            return redirect()->route('dashboard.partner-banner-section-items.index')
-                ->with('error', 'You cannot add more items because all partner banner sections have reached the limit of 3 items.');
-        }
+        $availableSections = PartnerBannerSection::where('is_active', true)->get();
 
         return view('dashboard.partners.banner-section-item.create', compact('availableSections'));
     }
@@ -137,38 +113,13 @@ class PartnerBannerSectionItemController extends Controller
 
     public function checkExists(): \Illuminate\Http\JsonResponse
     {
-        // Get counts of items per partner banner section
-        $itemsPerSection = PartnerBannerSectionItem::selectRaw('partner_banner_section_id, COUNT(*) as count')
-            ->groupBy('partner_banner_section_id')
-            ->pluck('count', 'partner_banner_section_id')
-            ->toArray();
-
         // Get all active partner banner sections
         $allActiveSections = PartnerBannerSection::where('is_active', true)->pluck('id')->toArray();
-
-        // Get sections that have reached the limit
-        $sectionsAtLimit = array_filter($itemsPerSection, function($count) {
-            return $count >= 3;
-        });
-
-        // Check if ALL active sections have reached the limit
-        $availableSections = array_diff($allActiveSections, array_keys($sectionsAtLimit));
-        $allSectionsAtLimit = empty($availableSections);
-
-        if ($allSectionsAtLimit) {
-            return response()->json([
-                'exists' => true,
-                'message' => 'You cannot add more items because all partner banner sections have reached the limit of 3 items.',
-                'sectionsAtLimit' => $sectionsAtLimit,
-                'availableSections' => []
-            ], 200);
-        }
 
         return response()->json([
             'exists' => false,
             'message' => 'You can add new items to available partner banner sections.',
-            'sectionsAtLimit' => $sectionsAtLimit,
-            'availableSections' => $availableSections
+            'availableSections' => $allActiveSections
         ], 200);
     }
 }

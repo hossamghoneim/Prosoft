@@ -56,25 +56,7 @@ class ServiceSectionItemController extends Controller
         $this->authorize(PermissionActions::CREATE);
 
         // Get all active service sections
-        $allActiveSections = ServiceSection::where('is_active', true)->pluck('id')->toArray();
-
-        // Get sections that have reached the limit of 3 items
-        $serviceSectionsWithItems = ServiceSectionItem::selectRaw('service_section_id, COUNT(*) as count')
-            ->groupBy('service_section_id')
-            ->having('count', '>=', 3)
-            ->pluck('service_section_id')
-            ->toArray();
-
-        // Get sections that haven't reached the limit
-        $availableSections = ServiceSection::where('is_active', true)
-            ->whereNotIn('id', $serviceSectionsWithItems)
-            ->get();
-
-        // Check if ALL service sections have reached the limit
-        if (empty(array_diff($allActiveSections, $serviceSectionsWithItems))) {
-            return redirect()->route('dashboard.service-section-items.index')
-                ->with('error', 'All service sections have reached the maximum limit of 3 items. You cannot add more items.');
-        }
+        $availableSections = ServiceSection::where('is_active', true)->get();
 
         return view('dashboard.services.section-item.create', compact('availableSections'));
     }
@@ -128,33 +110,10 @@ class ServiceSectionItemController extends Controller
         // Get all active service sections
         $allActiveSections = ServiceSection::where('is_active', true)->pluck('id')->toArray();
 
-        // Get count of existing items for each service section
-        $existingItems = ServiceSectionItem::selectRaw('service_section_id, COUNT(*) as count')
-            ->groupBy('service_section_id')
-            ->pluck('count', 'service_section_id')
-            ->toArray();
-
-        // Get sections that have reached the limit of 3 items
-        $sectionsAtLimit = array_filter($existingItems, function($count) {
-            return $count >= 3;
-        });
-
-        // Check if ALL service sections have reached the limit
-        $allSectionsAtLimit = empty(array_diff($allActiveSections, array_keys($sectionsAtLimit)));
-
-        if ($allSectionsAtLimit) {
-            return response()->json([
-                'exists' => true,
-                'message' => 'All service sections have reached the maximum limit of 3 items. You cannot add more items.',
-                'sectionsAtLimit' => array_keys($sectionsAtLimit)
-            ], 200);
-        }
-
         return response()->json([
             'exists' => false,
             'message' => 'You can add new items to available service sections.',
-            'availableSections' => $existingItems,
-            'sectionsAtLimit' => array_keys($sectionsAtLimit)
+            'availableSections' => $allActiveSections
         ], 200);
     }
 }

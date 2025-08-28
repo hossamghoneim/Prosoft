@@ -52,34 +52,15 @@ class PartnerController extends Controller
         // Get all active partnership sections
         $allActiveSections = PartnershipSection::where('is_active', true)->pluck('id')->toArray();
 
-        // Get sections that have reached the limit
-        $sectionsAtLimit = array_filter($partnersPerSection, function($count) {
-            return $count >= 6;
-        });
-
-        return view('dashboard.partners.index', compact('partnersPerSection', 'allActiveSections', 'sectionsAtLimit'));
+        return view('dashboard.partners.index', compact('partnersPerSection', 'allActiveSections'));
     }
 
     public function create(): View|RedirectResponse
     {
         $this->authorize(PermissionActions::CREATE);
 
-        // Get partnership sections that have less than 6 partners
-        $partnersPerSection = Partner::selectRaw('partnership_section_id, COUNT(*) as count')
-            ->groupBy('partnership_section_id')
-            ->pluck('count', 'partnership_section_id')
-            ->toArray();
-
-        $availableSections = PartnershipSection::where('is_active', true)
-            ->whereNotIn('id', array_keys(array_filter($partnersPerSection, function($count) {
-                return $count >= 6;
-            })))
-            ->get();
-
-        if ($availableSections->isEmpty()) {
-            return redirect()->route('dashboard.partners.index')
-                ->with('error', 'You cannot add more partners because all partnership sections have reached the limit of 6 partners.');
-        }
+        // Get all active partnership sections
+        $availableSections = PartnershipSection::where('is_active', true)->get();
 
         return view('dashboard.partners.create', compact('availableSections'));
     }
@@ -132,36 +113,13 @@ class PartnerController extends Controller
 
     public function checkExists(): \Illuminate\Http\JsonResponse
     {
-        // Get counts of partners per partnership section
-        $partnersPerSection = Partner::selectRaw('partnership_section_id, COUNT(*) as count')
-            ->groupBy('partnership_section_id')
-            ->pluck('count', 'partnership_section_id')
-            ->toArray();
-
         // Get all active partnership sections
         $allActiveSections = PartnershipSection::where('is_active', true)->pluck('id')->toArray();
 
-        // Check if all sections have reached the limit
-        $sectionsAtLimit = array_filter($partnersPerSection, function($count) {
-            return $count >= 6;
-        });
-
-        $exists = !empty(array_diff($allActiveSections, array_keys($sectionsAtLimit)));
-
-        if ($exists) {
-            return response()->json([
-                'exists' => false,
-                'message' => 'You can add new partners.',
-                'sectionsAtLimit' => $sectionsAtLimit,
-                'availableSections' => array_diff($allActiveSections, array_keys($sectionsAtLimit))
-            ], 200);
-        }
-
         return response()->json([
-            'exists' => true,
-            'message' => 'You cannot add more partners because all partnership sections have reached the limit of 6 partners.',
-            'sectionsAtLimit' => $sectionsAtLimit,
-            'availableSections' => []
+            'exists' => false,
+            'message' => 'You can add new partners.',
+            'availableSections' => $allActiveSections
         ], 200);
     }
 }

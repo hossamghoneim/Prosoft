@@ -74,35 +74,18 @@
                 <!-- begin :: Toolbar -->
                 <div class="d-flex justify-content-end" data-kt-docs-table-toolbar="base">
 
-                    <!-- begin :: Add Button -->
-                    @php
-                        $canAddMore = !empty(array_diff($allActiveSections, array_keys($sectionsAtLimit)));
-                    @endphp
+                                    <!-- begin :: Add Button -->
+                <a href="{{ route('dashboard.partners.create') }}" class="btn btn-primary" data-bs-toggle="tooltip"
+                    title="">
 
-                    @if(!$canAddMore)
-                        <button class="btn btn-secondary" disabled data-bs-toggle="tooltip"
-                            title="You cannot add more partners because all partnership sections have reached the limit of 6 partners">
+                    <span class="svg-icon svg-icon-2">
+                        <i class="fa fa-plus fa-lg"></i>
+                    </span>
 
-                            <span class="svg-icon svg-icon-2">
-                                <i class="fa fa-plus fa-lg"></i>
-                            </span>
+                    {{ __('Add new partner') }}
 
-                            {{ __('Add new partner') }}
-
-                        </button>
-                    @else
-                        <a href="{{ route('dashboard.partners.create') }}" class="btn btn-primary" data-bs-toggle="tooltip"
-                            title="">
-
-                            <span class="svg-icon svg-icon-2">
-                                <i class="fa fa-plus fa-lg"></i>
-                            </span>
-
-                            {{ __('Add new partner') }}
-
-                        </a>
-                    @endif
-                    <!-- end   :: Add Button -->
+                </a>
+                <!-- end   :: Add Button -->
 
                 </div>
                 <!-- end   :: Toolbar -->

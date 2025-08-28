@@ -75,45 +75,18 @@
                 <!-- begin :: Toolbar -->
                 <div class="d-flex justify-content-end" data-kt-docs-table-toolbar="base">
 
-                    <!-- begin :: Add Button -->
-                    @php
-                        $totalItems = array_sum($existingItems ?? []);
-                        $sectionsAtLimit = array_filter($existingItems ?? [], function($count) {
-                            return $count >= 3;
-                        });
+                                    <!-- begin :: Add Button -->
+                <a href="{{ route('dashboard.service-section-items.create') }}" class="btn btn-primary" data-bs-toggle="tooltip"
+                    title="">
 
-                        // Get all active service sections
-                        $allActiveSections = \App\Models\ServiceSection::where('is_active', true)->pluck('id')->toArray();
+                    <span class="svg-icon svg-icon-2">
+                        <i class="fa fa-plus fa-lg"></i>
+                    </span>
 
-                        // Check if ALL service sections have reached the limit
-                        $allSectionsAtLimit = empty(array_diff($allActiveSections, array_keys($sectionsAtLimit)));
-                        $canAddMore = !$allSectionsAtLimit;
-                    @endphp
+                    {{ __('Add new item') }}
 
-                    @if($canAddMore)
-                        <a href="{{ route('dashboard.service-section-items.create') }}" class="btn btn-primary" data-bs-toggle="tooltip"
-                            title="">
-
-                            <span class="svg-icon svg-icon-2">
-                                <i class="fa fa-plus fa-lg"></i>
-                            </span>
-
-                            {{ __('Add new item') }}
-
-                        </a>
-                    @else
-                        <button class="btn btn-secondary" disabled data-bs-toggle="tooltip"
-                            title="All service sections have reached the maximum limit of 3 items">
-
-                            <span class="svg-icon svg-icon-2">
-                                <i class="fa fa-plus fa-lg"></i>
-                            </span>
-
-                            {{ __('Add new item') }}
-
-                        </button>
-                    @endif
-                    <!-- end   :: Add Button -->
+                </a>
+                <!-- end   :: Add Button -->
 
                 </div>
                 <!-- end   :: Toolbar -->

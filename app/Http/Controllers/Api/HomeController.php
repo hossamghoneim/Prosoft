@@ -20,7 +20,7 @@ class HomeController extends Controller
         $partnerLogos = Partner::pluck('inner_logo')->take(6)->toArray();
         $primarySection = HomePrimarySection::where('is_active', true)->first();
         $secondarySection = HomeSecondarySection::first();
-        $solutions = Solution::select('id', 'title', 'image')->limit(6)->get();
+        $solutions = Solution::select('id', 'title', 'image')->get();
 
         return response()->json([
             'success' => true,
