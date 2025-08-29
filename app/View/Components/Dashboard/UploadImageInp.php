@@ -11,9 +11,9 @@ class UploadImageInp extends Component
     public $name;
     public $type;
 
-    public function __construct($image,$placeholder , $name, $type)
+    public function __construct($name, $image = null, $placeholder = 'default.jpg', $type = 'editable', $directory = null)
     {
-        $this->imagePath = getFilePath( $image, $placeholder );
+        $this->imagePath = getFilePath($image, $placeholder);
         $this->name      = $name;
         $this->type      = $type;
     }
@@ -26,6 +26,6 @@ class UploadImageInp extends Component
 
     public function render()
     {
-        return view('components.dashboard.upload-image-inp',['imagePath' => $this->imagePath]);
+        return view('components.dashboard.upload-image-inp', ['imagePath' => $this->imagePath]);
     }
 }

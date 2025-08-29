@@ -52,17 +52,17 @@
                 <div class="row mb-10">
 
                     <!-- begin :: Column -->
-                    <div class="col-md-6 fv-row d-flex justify-content-center">
+                    <div class="col-md-4 fv-row d-flex justify-content-center">
 
                         <div class="d-flex flex-column align-items-center">
                             <!-- begin :: Inner Logo -->
                             <label class="text-center fw-bold mb-4">{{ __('Inner Logo') }}</label>
                             @if($partner->inner_logo)
                                 <img src="{{ $partner->inner_logo }}" alt="Inner Logo"
-                                     class="img-fluid rounded" style="max-width: 200px; max-height: 200px;">
+                                     class="img-fluid rounded" style="max-width: 200px; max-height: 200px; border: 2px solid #e1e3ea; background-color: #f8f9fa; padding: 5px;">
                             @else
                                 <div class="bg-light rounded d-flex align-items-center justify-content-center"
-                                     style="width: 200px; height: 150px;">
+                                     style="width: 200px; height: 150px; border: 2px solid #e1e3ea;">
                                     <span class="text-muted">{{ __('No inner logo available') }}</span>
                                 </div>
                             @endif
@@ -73,21 +73,42 @@
                     <!-- end   :: Column -->
 
                     <!-- begin :: Column -->
-                    <div class="col-md-6 fv-row d-flex justify-content-center">
+                    <div class="col-md-4 fv-row d-flex justify-content-center">
 
                         <div class="d-flex flex-column align-items-center">
                             <!-- begin :: Outer Logo -->
                             <label class="text-center fw-bold mb-4">{{ __('Outer Logo') }}</label>
                             @if($partner->outer_logo)
                                 <img src="{{ $partner->outer_logo }}" alt="Outer Logo"
-                                     class="img-fluid rounded" style="max-width: 200px; max-height: 200px;">
+                                     class="img-fluid rounded" style="max-width: 200px; max-height: 200px; border: 2px solid #e1e3ea; background-color: #f8f9fa; padding: 5px;">
                             @else
                                 <div class="bg-light rounded d-flex align-items-center justify-content-center"
-                                     style="width: 200px; height: 150px;">
+                                     style="width: 200px; height: 150px; border: 2px solid #e1e3ea;">
                                     <span class="text-muted">{{ __('No outer logo available') }}</span>
                                 </div>
                             @endif
                             <!-- end   :: Outer Logo -->
+                        </div>
+
+                    </div>
+                    <!-- end   :: Column -->
+
+                    <!-- begin :: Column -->
+                    <div class="col-md-4 fv-row d-flex justify-content-center">
+
+                        <div class="d-flex flex-column align-items-center">
+                            <!-- begin :: Home Page Logo -->
+                            <label class="text-center fw-bold mb-4">{{ __('Home Page Logo') }}</label>
+                            @if($partner->home_page_logo)
+                                <img src="{{ $partner->home_page_logo }}" alt="Home Page Logo"
+                                     class="img-fluid rounded" style="max-width: 200px; max-height: 200px; border: 2px solid #e1e3ea; background-color: #f8f9fa; padding: 5px;">
+                            @else
+                                <div class="bg-light rounded d-flex align-items-center justify-content-center"
+                                     style="width: 200px; height: 150px; border: 2px solid #e1e3ea;">
+                                    <span class="text-muted">{{ __('No home page logo available') }}</span>
+                                </div>
+                            @endif
+                            <!-- end   :: Home Page Logo -->
                         </div>
 
                     </div>

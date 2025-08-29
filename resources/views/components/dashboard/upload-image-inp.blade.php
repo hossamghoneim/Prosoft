@@ -2,7 +2,7 @@
 <div class="image-input image-input-outline my-2" data-kt-image-input="true" >
 
     <!-- begin :: Image preview wrapper -->
-    <div class="image-input-wrapper w-125px h-125px" style="background-image: url('{{ $imagePath }}')"></div>
+    <div class="image-input-wrapper w-125px h-125px" style="background-image: url('{{ $imagePath }}'); border: 1px solid #e1e3ea; background-color: #f8f9fa; background-size: cover; background-position: center; background-repeat: no-repeat;"></div>
     <!-- end   :: Image preview wrapper -->
 
 @if( $type === 'editable')

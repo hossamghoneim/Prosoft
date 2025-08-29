@@ -59,7 +59,7 @@
                         <div class="d-flex flex-column">
                             <!-- begin :: Upload image component -->
                             <label class="text-center fw-bold mb-4">{{ __('Image') }}</label>
-                            <x-dashboard.upload-image-inp name="image" :image="$serviceBannerSection->image" directory="BannerImages"
+                            <x-dashboard.upload-image-inp name="image" :image="$serviceBannerSection->getRawOriginal('image')" directory="BannerImages"
                                 placeholder="default.jpg" type="show"></x-dashboard.upload-image-inp>
                             <!-- end   :: Upload image component -->
                         </div>

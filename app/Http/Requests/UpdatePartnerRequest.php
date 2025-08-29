@@ -31,6 +31,7 @@ class UpdatePartnerRequest extends FormRequest
             'background_color' => ['required', 'string', 'max:20'],
             'inner_logo' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,webp,svg', 'max:5120'], // 5MB
             'outer_logo' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,webp,svg', 'max:5120'], // 5MB
+            'home_page_logo' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,webp,svg', 'max:5120'], // 5MB
         ];
     }
 }

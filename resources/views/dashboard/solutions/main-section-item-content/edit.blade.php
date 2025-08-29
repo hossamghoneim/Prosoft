@@ -64,7 +64,7 @@
                             <div class="d-flex flex-column">
                                 <!-- begin :: Upload background image component -->
                                 <label class="text-center fw-bold mb-4">{{ __('Background Image') }}</label>
-                                <x-dashboard.upload-image-inp name="background_image" :image="$content->background_image" directory="solution-main-section-item-contents" placeholder="default.jpg" type="editable"></x-dashboard.upload-image-inp>
+                                <x-dashboard.upload-image-inp name="background_image" :image="$content->getRawOriginal('background_image')" directory="solution-main-section-item-contents" placeholder="default.jpg" type="editable"></x-dashboard.upload-image-inp>
                                 <p class="invalid-feedback" id="background_image"></p>
                                 <!-- end   :: Upload background image component -->
                             </div>
@@ -245,7 +245,7 @@
                             <div class="d-flex flex-column">
                                 <!-- begin :: Upload logo component -->
                                 <label class="text-center fw-bold mb-4">{{ __('Logo') }}</label>
-                                <x-dashboard.upload-image-inp name="logo" :image="$content->logo" directory="solution-main-section-item-contents" placeholder="default.jpg" type="editable"></x-dashboard.upload-image-inp>
+                                <x-dashboard.upload-image-inp name="logo" :image="$content->getRawOriginal('logo')" directory="solution-main-section-item-contents" placeholder="default.jpg" type="editable"></x-dashboard.upload-image-inp>
                                 <p class="invalid-feedback" id="logo"></p>
                                 <!-- end   :: Upload logo component -->
                             </div>

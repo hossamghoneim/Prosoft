@@ -48,6 +48,7 @@ class PermissionService
             'solution-main-section-items',
             'solution-main-section-item-contents',
             'solution-middle-sections',
+            'solution-middle-section-items',
             'terms-condition-hero-sections',
             'terms-condition-items',
     ];

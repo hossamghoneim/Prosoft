@@ -58,12 +58,12 @@
                     <div class="row mb-10">
 
                         <!-- begin :: Column -->
-                        <div class="col-md-6 fv-row d-flex justify-content-center">
+                        <div class="col-md-4 fv-row d-flex justify-content-center">
 
                             <div class="d-flex flex-column">
                                 <!-- begin :: Upload inner logo component -->
                                 <label class="text-center fw-bold mb-4">{{ __('Inner Logo') }}</label>
-                                <x-dashboard.upload-image-inp name="inner_logo" :image="$partner->inner_logo" directory="partner-logos" placeholder="default.jpg" type="editable"></x-dashboard.upload-image-inp>
+                                <x-dashboard.upload-image-inp :image="$partner->getRawOriginal('inner_logo')" placeholder="default.jpg" name="inner_logo" type="editable"></x-dashboard.upload-image-inp>
                                 <p class="invalid-feedback" id="inner_logo"></p>
                                 <!-- end   :: Upload inner logo component -->
                             </div>
@@ -72,14 +72,28 @@
                         <!-- end   :: Column -->
 
                         <!-- begin :: Column -->
-                        <div class="col-md-6 fv-row d-flex justify-content-center">
+                        <div class="col-md-4 fv-row d-flex justify-content-center">
 
                             <div class="d-flex flex-column">
                                 <!-- begin :: Upload outer logo component -->
                                 <label class="text-center fw-bold mb-4">{{ __('Outer Logo') }}</label>
-                                <x-dashboard.upload-image-inp name="outer_logo" :image="$partner->outer_logo" directory="partner-logos" placeholder="default.jpg" type="editable"></x-dashboard.upload-image-inp>
+                                <x-dashboard.upload-image-inp :image="$partner->getRawOriginal('outer_logo')" placeholder="default.jpg" name="outer_logo" type="editable"></x-dashboard.upload-image-inp>
                                 <p class="invalid-feedback" id="outer_logo"></p>
                                 <!-- end   :: Upload outer logo component -->
+                            </div>
+
+                        </div>
+                        <!-- end   :: Column -->
+
+                        <!-- begin :: Column -->
+                        <div class="col-md-4 fv-row d-flex justify-content-center">
+
+                            <div class="d-flex flex-column">
+                                <!-- begin :: Upload home page logo component -->
+                                <label class="text-center fw-bold mb-4">{{ __('Home Page Logo') }}</label>
+                                <x-dashboard.upload-image-inp :image="$partner->getRawOriginal('home_page_logo')" placeholder="default.jpg" name="home_page_logo" type="editable"></x-dashboard.upload-image-inp>
+                                <p class="invalid-feedback" id="home_page_logo"></p>
+                                <!-- end   :: Upload home page logo component -->
                             </div>
 
                         </div>

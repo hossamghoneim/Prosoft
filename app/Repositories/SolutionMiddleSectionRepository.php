@@ -22,10 +22,7 @@ class SolutionMiddleSectionRepository implements SolutionMiddleSectionRepository
         $query->when(isset($filters['search']), function ($q) use ($filters) {
             $search = $filters['search'];
             $q->where(function ($query) use ($search) {
-                $query->where('main_title', 'LIKE', "%{$search}%")
-                    ->orWhere('first_card_title', 'LIKE', "%{$search}%")
-                    ->orWhere('second_card_title', 'LIKE', "%{$search}%")
-                    ->orWhere('third_card_title', 'LIKE', "%{$search}%");
+                $query->where('main_title', 'LIKE', "%{$search}%");
             });
         });
 

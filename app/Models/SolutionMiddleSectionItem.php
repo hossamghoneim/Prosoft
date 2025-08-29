@@ -24,4 +24,9 @@ class SolutionMiddleSectionItem extends Model
     {
         return $this->belongsTo(SolutionMiddleSection::class);
     }
+
+    public function getCreatedAtAttribute($value)
+    {
+        return \Carbon\Carbon::parse($value)->format('d/m/Y H:i');
+    }
 }

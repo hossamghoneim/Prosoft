@@ -397,7 +397,7 @@
                     </div>
                 @endcan
 
-                @canany(['list_view@solutions', 'list_view@solution-hero-sections', 'list_view@solution-main-sections', 'list_view@solution-main-section-items', 'list_view@solution-main-section-item-contents', 'list_view@solution-middle-sections'])
+                @canany(['list_view@solutions', 'list_view@solution-hero-sections', 'list_view@solution-main-sections', 'list_view@solution-main-section-items', 'list_view@solution-main-section-item-contents', 'list_view@solution-middle-sections', 'list_view@solution-middle-section-items'])
                     <div class="menu-item mb-3">
                         <div class="menu-content pt-8 pb-0">
                             <span class="menu-section text-muted text-uppercase fs-8 ls-1">{{ __('Solutions') }}</span>
@@ -479,6 +479,19 @@
                                 <i class="fa fa-layer-group"></i>
                             </span>
                             <span class="menu-title"> {{ __('Solution Middle Section') }}</span>
+                        </a>
+                    </div>
+                @endcan
+
+                @can('list_view@solution-middle-section-items')
+                    <div class="menu-item">
+                        <a class="menu-link {{ isTabActive('solution-middle-section-items') }}"
+                            href="{{ route('dashboard.solution-middle-section-items.index') }}" data-bs-toggle="tooltip"
+                            data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
+                            <span class="menu-icon">
+                                <i class="fa fa-cubes"></i>
+                            </span>
+                            <span class="menu-title"> {{ __('Solution Middle Section Items') }}</span>
                         </a>
                     </div>
                 @endcan

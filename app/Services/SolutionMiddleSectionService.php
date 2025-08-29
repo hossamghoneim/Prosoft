@@ -38,19 +38,6 @@ class SolutionMiddleSectionService
             throw new \Exception('A middle section already exists for this solution.');
         }
 
-        // Handle icon uploads
-        if (isset($data['first_card_icon']) && $data['first_card_icon']) {
-            $data['first_card_icon'] = upload_file($data['first_card_icon'], 'solution-middle-section-icons');
-        }
-
-        if (isset($data['second_card_icon']) && $data['second_card_icon']) {
-            $data['second_card_icon'] = upload_file($data['second_card_icon'], 'solution-middle-section-icons');
-        }
-
-        if (isset($data['third_card_icon']) && $data['third_card_icon']) {
-            $data['third_card_icon'] = upload_file($data['third_card_icon'], 'solution-middle-section-icons');
-        }
-
         // Set is_active to true for the first record
         $data['is_active'] = true;
 
@@ -59,21 +46,6 @@ class SolutionMiddleSectionService
 
     public function update($id, array $data)
     {
-        $section = $this->repository->find($id);
-
-        // Handle icon uploads
-        if (isset($data['first_card_icon']) && $data['first_card_icon']) {
-            $data['first_card_icon'] = update_file($section->first_card_icon, $data['first_card_icon'], 'solution-middle-section-icons');
-        }
-
-        if (isset($data['second_card_icon']) && $data['second_card_icon']) {
-            $data['second_card_icon'] = update_file($section->second_card_icon, $data['second_card_icon'], 'solution-middle-section-icons');
-        }
-
-        if (isset($data['third_card_icon']) && $data['third_card_icon']) {
-            $data['third_card_icon'] = update_file($section->third_card_icon, $data['third_card_icon'], 'solution-middle-section-icons');
-        }
-
         return $this->repository->update($id, $data);
     }
 

@@ -63,7 +63,7 @@
                             <div class="d-flex flex-column">
                                 <!-- begin :: Upload icon component -->
                                 <label class="text-center fw-bold mb-4">{{ __("Icon") }}</label>
-                                <x-dashboard.upload-image-inp name="icon" :image="$aboutUsFeatureItem->icon" directory="about-us-feature-items" placeholder="default.jpg" type="editable" ></x-dashboard.upload-image-inp>
+                                <x-dashboard.upload-image-inp name="icon" :image="$aboutUsFeatureItem->getRawOriginal('icon')" directory="about-us-feature-items" placeholder="default.jpg" type="editable" ></x-dashboard.upload-image-inp>
                                 <p class="invalid-feedback" id="icon" ></p>
                                 <!-- end   :: Upload icon component -->
                             </div>

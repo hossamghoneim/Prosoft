@@ -63,7 +63,7 @@
                             <div class="d-flex flex-column">
                                 <!-- begin :: Upload background image component -->
                                 <label class="text-center fw-bold mb-4">{{ __('Background Image') }}</label>
-                                <x-dashboard.upload-image-inp name="background_image" :image="$aboutUsMiddleSection->background_image" directory="about-us-middle-sections" placeholder="default.jpg" type="editable"></x-dashboard.upload-image-inp>
+                                <x-dashboard.upload-image-inp name="background_image" :image="$aboutUsMiddleSection->getRawOriginal('background_image')" directory="about-us-middle-sections" placeholder="default.jpg" type="editable"></x-dashboard.upload-image-inp>
                                 <p class="invalid-feedback" id="background_image"></p>
                                 <!-- end   :: Upload background image component -->
                             </div>

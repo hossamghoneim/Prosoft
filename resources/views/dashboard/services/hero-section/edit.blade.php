@@ -63,7 +63,7 @@
                             <div class="d-flex flex-column">
                                 <!-- begin :: Upload image component -->
                                 <label class="text-center fw-bold mb-4">{{ __("Image") }}</label>
-                                <x-dashboard.upload-image-inp name="image" :image="$serviceHeroSection->image" directory="Brands" placeholder="default.jpg" type="editable" ></x-dashboard.upload-image-inp>
+                                <x-dashboard.upload-image-inp name="image" :image="$serviceHeroSection->getRawOriginal('image')" directory="Brands" placeholder="default.jpg" type="editable" ></x-dashboard.upload-image-inp>
                                 <p class="invalid-feedback" id="image" ></p>
                                 <!-- end   :: Upload image component -->
                             </div>

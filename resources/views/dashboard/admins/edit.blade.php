@@ -55,7 +55,7 @@
                     <!-- begin :: Row -->
                     <div class="d-flex flex-column align-items-center gap-6 justify-content-center text-center mt-4 mb-10">
                         <!--begin::Image input-->
-                        <x-dashboard.upload-image-inp name="image" :image="$admin->image" placeholder="default.svg" type="editable"></x-dashboard.upload-image-inp>
+                        <x-dashboard.upload-image-inp name="image" :image="$admin->getRawOriginal('image')" placeholder="default.svg" type="editable"></x-dashboard.upload-image-inp>
                         <p class="invalid-feedback" id="image"></p>
                         <!--end::Image input-->
                     </div>

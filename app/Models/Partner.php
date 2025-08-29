@@ -9,6 +9,7 @@ class Partner extends Model
     protected $fillable = [
         'inner_logo',
         'outer_logo',
+        'home_page_logo',
         'partnership_section_id',
         'title',
         'description',
@@ -24,6 +25,11 @@ class Partner extends Model
     }
 
     public function getOuterLogoAttribute($value)
+    {
+        return getFilePath($value);
+    }
+
+    public function getHomePageLogoAttribute($value)
     {
         return getFilePath($value);
     }

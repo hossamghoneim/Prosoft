@@ -36,6 +36,10 @@ class PartnerService
             $attributes['outer_logo'] = upload_file($attributes['outer_logo'], 'partner-logos');
         }
 
+        if (isset($attributes['home_page_logo'])) {
+            $attributes['home_page_logo'] = upload_file($attributes['home_page_logo'], 'partner-logos');
+        }
+
         $attributes['is_active'] = true;
 
         return $this->partnerRepository->store($attributes);
@@ -52,6 +56,10 @@ class PartnerService
 
         if (isset($attributes['outer_logo'])) {
             $attributes['outer_logo'] = update_file($partner->outer_logo, $attributes['outer_logo'], 'partner-logos');
+        }
+
+        if (isset($attributes['home_page_logo'])) {
+            $attributes['home_page_logo'] = update_file($partner->home_page_logo, $attributes['home_page_logo'], 'partner-logos');
         }
 
         return $this->partnerRepository->update($id, $attributes);

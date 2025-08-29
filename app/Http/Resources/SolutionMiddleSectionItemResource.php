@@ -5,7 +5,7 @@ namespace App\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class PartnerResource extends JsonResource
+class SolutionMiddleSectionItemResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,18 +16,14 @@ class PartnerResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'partnership_section_id' => $this->partnership_section_id,
+            'solution_middle_section_id' => $this->solution_middle_section_id,
             'title' => $this->title,
             'description' => $this->description,
-            'button_text' => $this->button_text,
-            'button_url' => $this->button_url,
-            'background_color' => $this->background_color,
-            'inner_logo' => $this->inner_logo,
-            'outer_logo' => $this->outer_logo,
-            'home_page_logo' => $this->home_page_logo,
+            'icon' => $this->icon,
+            'order' => $this->order,
             'is_active' => $this->is_active,
             'created_at' => $this->created_at,
-            'partnership_section' => $this->whenLoaded('partnershipSection'),
+            'solution_middle_section' => $this->whenLoaded('solutionMiddleSection'),
         ];
     }
 }
