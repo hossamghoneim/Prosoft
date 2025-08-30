@@ -17,7 +17,7 @@ class HomeController extends Controller
     public function getHomePage(Request $request)
     {
         $hero = HomeHeroSection::where('is_active', true)->first();
-        $partnerLogos = Partner::pluck('inner_logo')->take(6)->toArray();
+        $partnerLogos = Partner::pluck('home_page_logo')->take(6)->toArray();
         $primarySection = HomePrimarySection::where('is_active', true)->first();
         $secondarySection = HomeSecondarySection::first();
         $solutions = Solution::select('id', 'title', 'image')->get();
