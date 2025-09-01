@@ -40,201 +40,6 @@
             <div class="menu menu-column menu-title-gray-800 menu-state-title-primary menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-500"
                 id="#kt_aside_menu" data-kt-menu="true" data-kt-menu-expand="false">
 
-                @canany(['list_view@service-hero-sections', 'list_view@service-banner-sections',
-                    'list_view@service-sections', 'list_view@service-section-items', 'list_view@partnership-hero-sections'])
-                    <!-- begin :: cars section -->
-                    <div class="menu-item mb-3">
-                        <div class="menu-content pt-8 pb-0">
-                            <span class="menu-section text-muted text-uppercase fs-8 ls-1">{{ __('Services') }}</span>
-                        </div>
-                    </div>
-                @endcanany
-
-                @can('list_view@service-sections')
-                    <div class="menu-item">
-                        <a class="menu-link {{ isTabActive('service-sections') }}"
-                            href="{{ route('dashboard.service-sections.index') }}" data-bs-toggle="tooltip"
-                            data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
-                            <span class="menu-icon">
-                                <i class="fa fa-list"></i>
-                            </span>
-                            <span class="menu-title"> {{ __('Service sections') }}</span>
-                        </a>
-                    </div>
-                @endcan
-
-                @can('list_view@service-section-items')
-                    <div class="menu-item">
-                        <a class="menu-link {{ isTabActive('service-section-items') }}"
-                            href="{{ route('dashboard.service-section-items.index') }}" data-bs-toggle="tooltip"
-                            data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
-                            <span class="menu-icon">
-                                <i class="fa fa-cube"></i>
-                            </span>
-                            <span class="menu-title"> {{ __('Service section items') }}</span>
-                        </a>
-                    </div>
-                @endcan
-
-                @can('list_view@service-hero-sections')
-                    <div class="menu-item">
-                        <a class="menu-link {{ isTabActive('service-hero-sections') }}"
-                            href="{{ route('dashboard.service-hero-sections.index') }}" data-bs-toggle="tooltip"
-                            data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
-                            <span class="menu-icon">
-                                <i class="fa fa-crown"></i>
-                            </span>
-                            <span class="menu-title"> {{ __('Hero section') }}</span>
-                        </a>
-                    </div>
-                @endcan
-
-                @can('list_view@service-banner-sections')
-                    <div class="menu-item">
-                        <a class="menu-link {{ isTabActive('service-banner-sections') }}"
-                            href="{{ route('dashboard.service-banner-sections.index') }}" data-bs-toggle="tooltip"
-                            data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
-                            <span class="menu-icon">
-                                <i class="fa fa-bullhorn"></i>
-                            </span>
-                            <span class="menu-title"> {{ __('Banner section') }}</span>
-                        </a>
-                    </div>
-                @endcan
-
-                @canany(['list_view@partnership-hero-sections', 'list_view@partnership-sections', 'list_view@partners'])
-                    <div class="menu-item mb-3">
-                        <div class="menu-content pt-8 pb-0">
-                            <span class="menu-section text-muted text-uppercase fs-8 ls-1">{{ __('Partnerships') }}</span>
-                        </div>
-                    </div>
-                @endcanany
-
-                @can('list_view@partnership-hero-sections')
-                    <div class="menu-item">
-                        <a class="menu-link {{ isTabActive('partnership-hero-sections') }}"
-                            href="{{ route('dashboard.partnership-hero-sections.index') }}" data-bs-toggle="tooltip"
-                            data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
-                            <span class="menu-icon">
-                                <i class="fa fa-crown"></i>
-                            </span>
-                            <span class="menu-title"> {{ __('Hero section') }}</span>
-                        </a>
-                    </div>
-                @endcan
-
-                @can('list_view@partnership-sections')
-                    <div class="menu-item">
-                        <a class="menu-link {{ isTabActive('partnership-sections') }}"
-                            href="{{ route('dashboard.partnership-sections.index') }}" data-bs-toggle="tooltip"
-                            data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
-                            <span class="menu-icon">
-                                <i class="fa fa-handshake"></i>
-                            </span>
-                            <span class="menu-title"> {{ __('Partnership section') }}</span>
-                        </a>
-                    </div>
-                @endcan
-
-                @can('list_view@partners')
-                    <div class="menu-item">
-                        <a class="menu-link {{ isTabActive('partners') }}"
-                            href="{{ route('dashboard.partners.index') }}" data-bs-toggle="tooltip"
-                            data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
-                            <span class="menu-icon">
-                                <i class="fa fa-users"></i>
-                            </span>
-                            <span class="menu-title"> {{ __('Partners') }}</span>
-                        </a>
-                    </div>
-                @endcan
-
-                @can('list_view@partner-banner-sections')
-                    <div class="menu-item">
-                        <a class="menu-link {{ isTabActive('partner-banner-sections') }}"
-                            href="{{ route('dashboard.partner-banner-sections.index') }}" data-bs-toggle="tooltip"
-                            data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
-                            <span class="menu-icon">
-                                <i class="fa fa-image"></i>
-                            </span>
-                            <span class="menu-title"> {{ __('Banner section') }}</span>
-                        </a>
-                    </div>
-                @endcan
-
-                @can('list_view@partner-banner-section-items')
-                    <div class="menu-item">
-                        <a class="menu-link {{ isTabActive('partner-banner-section-items') }}"
-                            href="{{ route('dashboard.partner-banner-section-items.index') }}" data-bs-toggle="tooltip"
-                            data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
-                            <span class="menu-icon">
-                                <i class="fa fa-list"></i>
-                            </span>
-                            <span class="menu-title"> {{ __('Banner items') }}</span>
-                        </a>
-                    </div>
-                @endcan
-
-                @canany(['list_view@contact-us-contents', 'list_view@contact-us-sections'])
-                    <div class="menu-item mb-3">
-                        <div class="menu-content pt-8 pb-0">
-                            <span class="menu-section text-muted text-uppercase fs-8 ls-1">{{ __('Contact Us') }}</span>
-                        </div>
-                    </div>
-                @endcanany
-
-                @can('list_view@contact-us-contents')
-                    <div class="menu-item">
-                        <a class="menu-link {{ isTabActive('contact-us-contents') }}"
-                            href="{{ route('dashboard.contact-us-contents.index') }}" data-bs-toggle="tooltip"
-                            data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
-                            <span class="menu-icon">
-                                <i class="fa fa-envelope"></i>
-                            </span>
-                            <span class="menu-title"> {{ __('Contents') }}</span>
-                        </a>
-                    </div>
-                @endcan
-
-                @can('list_view@contact-us-sections')
-                    <div class="menu-item">
-                        <a class="menu-link {{ isTabActive('contact-us-sections') }}"
-                            href="{{ route('dashboard.contact-us-sections.index') }}" data-bs-toggle="tooltip"
-                            data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
-                            <span class="menu-icon">
-                                <i class="fa fa-list"></i>
-                            </span>
-                            <span class="menu-title"> {{ __('Sections') }}</span>
-                        </a>
-                    </div>
-                @endcan
-
-                @can('list_view@contact-inquiries')
-                    <div class="menu-item">
-                        <a class="menu-link {{ isTabActive('contact-inquiries') }}"
-                            href="{{ route('dashboard.contact-inquiries.index') }}" data-bs-toggle="tooltip"
-                            data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
-                            <span class="menu-icon">
-                                <i class="fa fa-comments"></i>
-                            </span>
-                            <span class="menu-title"> {{ __('Inquiries') }}</span>
-                        </a>
-                    </div>
-                @endcan
-
-                @can('list_view@locations')
-                    <div class="menu-item">
-                        <a class="menu-link {{ isTabActive('locations') }}"
-                            href="{{ route('dashboard.locations.index') }}" data-bs-toggle="tooltip"
-                            data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
-                            <span class="menu-icon">
-                                <i class="fa fa-map-marker"></i>
-                            </span>
-                            <span class="menu-title"> {{ __('Locations') }}</span>
-                        </a>
-                    </div>
-                @endcan
-
                 @canany(['list_view@home-hero-sections', 'list_view@home-primary-sections', 'list_view@home-secondary-sections'])
                     <div class="menu-item mb-3">
                         <div class="menu-content pt-8 pb-0">
@@ -492,6 +297,201 @@
                                 <i class="fa fa-cubes"></i>
                             </span>
                             <span class="menu-title"> {{ __('Solution Middle Section Items') }}</span>
+                        </a>
+                    </div>
+                @endcan
+
+                @canany(['list_view@service-hero-sections', 'list_view@service-banner-sections',
+                    'list_view@service-sections', 'list_view@service-section-items', 'list_view@partnership-hero-sections'])
+                    <!-- begin :: cars section -->
+                    <div class="menu-item mb-3">
+                        <div class="menu-content pt-8 pb-0">
+                            <span class="menu-section text-muted text-uppercase fs-8 ls-1">{{ __('Services') }}</span>
+                        </div>
+                    </div>
+                @endcanany
+
+                @can('list_view@service-sections')
+                    <div class="menu-item">
+                        <a class="menu-link {{ isTabActive('service-sections') }}"
+                            href="{{ route('dashboard.service-sections.index') }}" data-bs-toggle="tooltip"
+                            data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
+                            <span class="menu-icon">
+                                <i class="fa fa-list"></i>
+                            </span>
+                            <span class="menu-title"> {{ __('Service sections') }}</span>
+                        </a>
+                    </div>
+                @endcan
+
+                @can('list_view@service-section-items')
+                    <div class="menu-item">
+                        <a class="menu-link {{ isTabActive('service-section-items') }}"
+                            href="{{ route('dashboard.service-section-items.index') }}" data-bs-toggle="tooltip"
+                            data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
+                            <span class="menu-icon">
+                                <i class="fa fa-cube"></i>
+                            </span>
+                            <span class="menu-title"> {{ __('Service section items') }}</span>
+                        </a>
+                    </div>
+                @endcan
+
+                @can('list_view@service-hero-sections')
+                    <div class="menu-item">
+                        <a class="menu-link {{ isTabActive('service-hero-sections') }}"
+                            href="{{ route('dashboard.service-hero-sections.index') }}" data-bs-toggle="tooltip"
+                            data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
+                            <span class="menu-icon">
+                                <i class="fa fa-crown"></i>
+                            </span>
+                            <span class="menu-title"> {{ __('Hero section') }}</span>
+                        </a>
+                    </div>
+                @endcan
+
+                @can('list_view@service-banner-sections')
+                    <div class="menu-item">
+                        <a class="menu-link {{ isTabActive('service-banner-sections') }}"
+                            href="{{ route('dashboard.service-banner-sections.index') }}" data-bs-toggle="tooltip"
+                            data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
+                            <span class="menu-icon">
+                                <i class="fa fa-bullhorn"></i>
+                            </span>
+                            <span class="menu-title"> {{ __('Banner section') }}</span>
+                        </a>
+                    </div>
+                @endcan
+
+                @canany(['list_view@partnership-hero-sections', 'list_view@partnership-sections', 'list_view@partners'])
+                    <div class="menu-item mb-3">
+                        <div class="menu-content pt-8 pb-0">
+                            <span class="menu-section text-muted text-uppercase fs-8 ls-1">{{ __('Partnerships') }}</span>
+                        </div>
+                    </div>
+                @endcanany
+
+                @can('list_view@partnership-hero-sections')
+                    <div class="menu-item">
+                        <a class="menu-link {{ isTabActive('partnership-hero-sections') }}"
+                            href="{{ route('dashboard.partnership-hero-sections.index') }}" data-bs-toggle="tooltip"
+                            data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
+                            <span class="menu-icon">
+                                <i class="fa fa-crown"></i>
+                            </span>
+                            <span class="menu-title"> {{ __('Hero section') }}</span>
+                        </a>
+                    </div>
+                @endcan
+
+                @can('list_view@partnership-sections')
+                    <div class="menu-item">
+                        <a class="menu-link {{ isTabActive('partnership-sections') }}"
+                            href="{{ route('dashboard.partnership-sections.index') }}" data-bs-toggle="tooltip"
+                            data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
+                            <span class="menu-icon">
+                                <i class="fa fa-handshake"></i>
+                            </span>
+                            <span class="menu-title"> {{ __('Partnership section') }}</span>
+                        </a>
+                    </div>
+                @endcan
+
+                @can('list_view@partners')
+                    <div class="menu-item">
+                        <a class="menu-link {{ isTabActive('partners') }}"
+                            href="{{ route('dashboard.partners.index') }}" data-bs-toggle="tooltip"
+                            data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
+                            <span class="menu-icon">
+                                <i class="fa fa-users"></i>
+                            </span>
+                            <span class="menu-title"> {{ __('Partners') }}</span>
+                        </a>
+                    </div>
+                @endcan
+
+                @can('list_view@partner-banner-sections')
+                    <div class="menu-item">
+                        <a class="menu-link {{ isTabActive('partner-banner-sections') }}"
+                            href="{{ route('dashboard.partner-banner-sections.index') }}" data-bs-toggle="tooltip"
+                            data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
+                            <span class="menu-icon">
+                                <i class="fa fa-image"></i>
+                            </span>
+                            <span class="menu-title"> {{ __('Banner section') }}</span>
+                        </a>
+                    </div>
+                @endcan
+
+                @can('list_view@partner-banner-section-items')
+                    <div class="menu-item">
+                        <a class="menu-link {{ isTabActive('partner-banner-section-items') }}"
+                            href="{{ route('dashboard.partner-banner-section-items.index') }}" data-bs-toggle="tooltip"
+                            data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
+                            <span class="menu-icon">
+                                <i class="fa fa-list"></i>
+                            </span>
+                            <span class="menu-title"> {{ __('Banner items') }}</span>
+                        </a>
+                    </div>
+                @endcan
+
+                @canany(['list_view@contact-us-contents', 'list_view@contact-us-sections'])
+                    <div class="menu-item mb-3">
+                        <div class="menu-content pt-8 pb-0">
+                            <span class="menu-section text-muted text-uppercase fs-8 ls-1">{{ __('Contact Us') }}</span>
+                        </div>
+                    </div>
+                @endcanany
+
+                @can('list_view@contact-us-contents')
+                    <div class="menu-item">
+                        <a class="menu-link {{ isTabActive('contact-us-contents') }}"
+                            href="{{ route('dashboard.contact-us-contents.index') }}" data-bs-toggle="tooltip"
+                            data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
+                            <span class="menu-icon">
+                                <i class="fa fa-envelope"></i>
+                            </span>
+                            <span class="menu-title"> {{ __('Contents') }}</span>
+                        </a>
+                    </div>
+                @endcan
+
+                @can('list_view@contact-us-sections')
+                    <div class="menu-item">
+                        <a class="menu-link {{ isTabActive('contact-us-sections') }}"
+                            href="{{ route('dashboard.contact-us-sections.index') }}" data-bs-toggle="tooltip"
+                            data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
+                            <span class="menu-icon">
+                                <i class="fa fa-list"></i>
+                            </span>
+                            <span class="menu-title"> {{ __('Sections') }}</span>
+                        </a>
+                    </div>
+                @endcan
+
+                @can('list_view@contact-inquiries')
+                    <div class="menu-item">
+                        <a class="menu-link {{ isTabActive('contact-inquiries') }}"
+                            href="{{ route('dashboard.contact-inquiries.index') }}" data-bs-toggle="tooltip"
+                            data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
+                            <span class="menu-icon">
+                                <i class="fa fa-comments"></i>
+                            </span>
+                            <span class="menu-title"> {{ __('Inquiries') }}</span>
+                        </a>
+                    </div>
+                @endcan
+
+                @can('list_view@locations')
+                    <div class="menu-item">
+                        <a class="menu-link {{ isTabActive('locations') }}"
+                            href="{{ route('dashboard.locations.index') }}" data-bs-toggle="tooltip"
+                            data-bs-trigger="hover" data-bs-dismiss="click" data-bs-placement="right">
+                            <span class="menu-icon">
+                                <i class="fa fa-map-marker"></i>
+                            </span>
+                            <span class="menu-title"> {{ __('Locations') }}</span>
                         </a>
                     </div>
                 @endcan
