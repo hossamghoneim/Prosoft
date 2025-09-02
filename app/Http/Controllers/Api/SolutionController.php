@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\Api\SolutionMainSectionApiResource;
 use App\Models\AboutUsBannerSection;
 use App\Models\Solution;
 use App\Models\SolutionHeroSection;
@@ -41,7 +42,7 @@ class SolutionController extends Controller
                         'solutionMainSectionItemContent' => function ($q) {
                             $q->orderBy('id', 'asc');
                         }
-                    ])->get();
+                    ]);
             }
         ])->where('solution_id', $request->solution_id)->where('is_active', true)->first();
 
@@ -53,12 +54,11 @@ class SolutionController extends Controller
 
         $banner = AboutUsBannerSection::where('is_active', true)->first();
 
-
         return response()->json([
             'success' => true,
             'data' => [
                 'hero' => $hero,
-                'mainSection' => $mainSection,
+                'mainSection' => $mainSection ? new SolutionMainSectionApiResource($mainSection) : null,
                 'middleSection' => $middleSection,
                 'banner' => $banner
             ]
