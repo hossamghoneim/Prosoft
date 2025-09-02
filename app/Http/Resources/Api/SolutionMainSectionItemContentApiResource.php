@@ -26,6 +26,7 @@ class SolutionMainSectionItemContentApiResource extends JsonResource
             'second_card_description' => $this->second_card_description,
             'third_card_title' => $this->third_card_title,
             'third_card_description' => $this->third_card_description,
+            'button_text' => $this->button_text,
             'logo' => $this->logo && str_contains($this->logo, 'default.jpg') ? null : $this->logo,
         ];
     }
