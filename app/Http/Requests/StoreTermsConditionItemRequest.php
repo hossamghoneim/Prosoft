@@ -36,3 +36,6 @@ class StoreTermsConditionItemRequest extends FormRequest
 
 
 
+
+
+

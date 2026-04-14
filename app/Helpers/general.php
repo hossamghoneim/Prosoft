@@ -87,13 +87,11 @@ if(!function_exists('getFilePath')){
 
     function getFilePath( $FileName = null , $defaultImage = 'default.jpg'): string
     {
-        $imagePath = public_path('/storage/' . $FileName);
-
-        if ( $FileName && file_exists( $imagePath ) ) // check if the directory is null or the image doesn't exist
+        if ( $FileName ) {
             return asset('/storage')  . '/' . $FileName;
-        else
-            return asset('placeholder_images/' . $defaultImage);
+        }
 
+        return asset('placeholder_images/' . $defaultImage);
     }
 
 }
@@ -102,17 +100,9 @@ if(!function_exists('getFileBasePath')){
 
     function getFileBasePath( ): string
     {
-        return Storage::disk(env('FILESYSTEM_DRIVER'))->url( '/' );
+        return Storage::disk(env('FILESYSTEM_DISK', 'public'))->url( '/' );
     }
 
-}
-
-if(!function_exists('getLocale')){
-
-    function getLocale() : string
-    {
-        return app()->getLocale();
-    }
 }
 
 if ( !function_exists('isDarkMode') ) {
